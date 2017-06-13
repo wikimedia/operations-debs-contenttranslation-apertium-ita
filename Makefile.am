@@ -51,6 +51,7 @@ $(LANG1).rlx.bin: $(BASENAME).$(LANG1).rlx $(CGCOMP)
 ###############################################################################
 EXTRA_DIST=$(BASENAME).$(LANG1).dix \
            $(BASENAME).$(LANG1).rlx \
+           $(BASENAME).post-$(LANG1).dix \
            $(LANG1).prob            \
 	   $(BASENAME).$(LANG1).tsx \
 	   $(BASENAME).$(LANG1).acx \
@@ -73,7 +74,7 @@ pkgconfig_DATA = $(BASENAME).pc
 
 noinst_DATA=modes/$(LANG1)-morph.mode
 
-install-data-local:
+install-data-local: install-modes
 	test -d $(DESTDIR)$(apertium_ita_srcdir) || mkdir -p $(DESTDIR)$(apertium_ita_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).dix $(DESTDIR)$(apertium_ita_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).rlx $(DESTDIR)$(apertium_ita_srcdir)

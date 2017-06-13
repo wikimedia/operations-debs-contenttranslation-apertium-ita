@@ -958,7 +958,16 @@
           <r>della<b/></r>
         </p>
       </e>
- 
+  
+      <e>
+        <p>
+          <l><b/><a/>i<b/></l>
+          <r>degli<b/></r>
+        </p>
+       <par n="vocals"/>
+      </e>
+
+
       <e>
         <p>
           <l><b/><a/>i<b/></l>
@@ -1562,6 +1571,15 @@
         </p>
         <par n="cons_especiales"/>
       </e>
+
+      <e>
+        <p>
+          <l><b/></l>
+          <r>gli<b/></r>
+        </p>
+        <par n="vocals"/>
+      </e>
+
 
   
     </pardef>
