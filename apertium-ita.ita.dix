@@ -89,12 +89,22 @@
     <sdef n="web" 	c=""/> 
     <sdef n="apos" 	c=""/> 
     <sdef n="guio" 	c=""/> 
+    <sdef n="lquot" 	c=""/> 
+    <sdef n="quot" 	c=""/> 
+    <sdef n="rquot" 	c=""/> 
     <sdef n="time" 	c=""/> 
   </sdefs>
   <pardefs>
 <pardef n="urls">
   <e>       <re>(http://|https://|ftp://)?[áéíóúàèìòùäëïöüñça-z0-9](([\-_])?[áéíóúàèìòùäëïöüñça-z0-9])*(.[áéíóúàèìòùäëïöüñça-z0-9](([\-_])?[áéíóúàèìòùäëïöüñça-z0-9])*)*(.[a-z][a-z]|.aero|.asia|.biz|.cat|.com|.coop|.edu|.gov|.info|.int|.jobs|.mil|.mobi|.museum|.name|.net|.org|.pro|.tel|.travel)(/([áéíóúàèìòùäëïöüñça-z0-9\-_\?=&amp;\*,]+(.[áéíóúàèìòùäëïöüñça-z0-9\-_\?=&amp;\*,]+)*/)*([áéíóúàèìòùäëïöüñça-z0-9\-_\?=&amp;\*,]+(.[áéíóúàèìòùäëïöüñça-z0-9\-_\?=&amp;\*,]+)*)?)?</re><p><l></l><r><s n="web"/></r></p></e>
 </pardef>
+
+    <pardef n="quotes">
+      <e><re>"</re><p><l/><r><s n="quot"/></r></p></e>
+      <e><re>»</re><p><l/><r><s n="rquot"/></r></p></e>
+      <e><re>«</re><p><l/><r><s n="lquot"/></r></p></e>
+    </pardef>
+
     
 <pardef n="emails">
   <e>       <re>[a-z.]+@[a-z.]+</re><p><l></l><r><s n="web"/></r></p></e>
@@ -110,7 +120,7 @@
     
 <pardef n="numeros">
   <e>       <re>[0-9]+([.,][0-9]+)?</re><p><l></l><r><s n="num"/></r></p></e>
-  <e>       <re>[0-9]+([.,][0-9]+)?%</re><p><l></l><r><s n="num"/><s n="percent"/></r></p></e>
+  <e>       <re>[0-9]+([.,][0-9]+)? *</re><p><l>%</l><r><s n="num"/><s n="percent"/></r></p></e>
   <e>       <re>[0-9]+([.,][0-9]+)?</re><p><l>°</l><r>°<s n="num"/></r></p></e> <!-- degree -->
   <e>       <re>[0-9]+([.,][0-9]+)?</re><p><l>º</l><r>º<s n="num"/></r></p></e> <!-- primo, secundo... -->
   <e>       <re>[0-9]+([.,][0-9]+)?</re><p><l>ª</l><r>ª<s n="num"/></r></p></e> <!-- prima, secunda... -->
@@ -137,7 +147,13 @@
     
 
 <pardef n="separa">
-  <e>       <re>[.\?;:!]</re><p><l></l><r><s n="sent"/></r></p></e>
+      <e><re>([.\?;:!]|[\?!]+|...)</re><p><l/><r><s n="sent"/></r></p></e>
+
+</pardef>
+
+<pardef n="guionet">
+  <e>       <p><l>-</l><r>-<s n="guio"/></r></p></e>
+  <e>       <p><l>–</l><r>–<s n="guio"/></r></p></e>
 </pardef>
  
 <pardef n="coma">
@@ -493,9 +509,9 @@
   <e>       <p><l></l>          <r><s n="n"/><s n="m"/><s n="sp"/></r></p></e>
 </pardef>
 
-<pardef n="favela/s__n">
+<pardef n="favela__n">
   <e>       <p><l></l>          <r><s n="n"/><s n="f"/><s n="sg"/></r></p></e>
-  <e>       <p><l>s</l>         <r>s<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
+  <e>       <p><l>s</l>         <r><s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 </pardef>
     
 <pardef n="scacchi__n">
@@ -5109,8 +5125,8 @@
 </pardef>
     
 <pardef n="/avere__vblex">
-  <e>       <p><l>avente</l>    <r>avere<s n="vblex"/><s n="pprs"/><s n="mf"/><s n="sg"/></r></p></e>
-  <e>       <p><l>aventi</l>    <r>avere<s n="vblex"/><s n="pprs"/><s n="mf"/><s n="pl"/></r></p></e>
+ <!-- <e>       <p><l>avente</l>    <r>avere<s n="vblex"/><s n="pprs"/><s n="mf"/><s n="sg"/></r></p></e>
+  <e>       <p><l>aventi</l>    <r>avere<s n="vblex"/><s n="pprs"/><s n="mf"/><s n="pl"/></r></p></e>-->
   <e>       <p><l>avremmo</l>   <r>avere<s n="vblex"/><s n="cni"/><s n="p1"/><s n="pl"/></r></p></e>
   <e>       <p><l>avrei</l>     <r>avere<s n="vblex"/><s n="cni"/><s n="p1"/><s n="sg"/></r></p></e>
   <e>       <p><l>avreste</l>   <r>avere<s n="vblex"/><s n="cni"/><s n="p2"/><s n="pl"/></r></p></e>
@@ -12066,11 +12082,6 @@
   <e>       <p><l>hissime</l>   <r>o<s n="adj"/><s n="sup"/><s n="f"/><s n="pl"/></r></p></e>
 </pardef>
   
-<pardef n="altruist/a__adj">
-  <e>       <p><l>a</l>         <r>a<s n="adj"/><s n="mf"/><s n="sg"/></r></p></e>
-  <e>       <p><l>i</l>         <r>a<s n="adj"/><s n="m"/><s n="pl"/></r></p></e>
-  <e>       <p><l>e</l>         <r>a<s n="adj"/><s n="f"/><s n="pl"/></r></p></e>
-</pardef>
     
 <pardef n="destr/a__adj">
   <e>       <p><l>a</l>         <r>a<s n="adj"/><s n="f"/><s n="sg"/></r></p></e>
@@ -12408,6 +12419,15 @@
   <e>       <p><l>altre</l>     <r>un<b/>altro<s n="det"/><s n="ind"/><s n="f"/><s n="pl"/></r></p></e>
   <e>       <p><l>un'altra</l>  <r>un<b/>altro<s n="det"/><s n="ind"/><s n="f"/><s n="sg"/></r></p></e>
 </pardef>
+
+    
+<pardef n="/un_altro__prn">
+  <e>       <p><l>altri</l>     <r>un<b/>altro<s n="prn"/><s n="tn"/><s n="m"/><s n="pl"/></r></p></e>
+  <e>       <p><l>un<b/>altro</l><r>un<b/>altro<s n="prn"/><s n="tn"/><s n="m"/><s n="sg"/></r></p></e>
+  <e>       <p><l>altre</l>     <r>un<b/>altro<s n="prn"/><s n="tn"/><s n="f"/><s n="pl"/></r></p></e>
+  <e>       <p><l>un'altra</l>  <r>un<b/>altro<s n="prn"/><s n="tn"/><s n="f"/><s n="sg"/></r></p></e>
+</pardef>
+
 
 <pardef n="/gli_altri__prn">
   <e>       <p><l>gli<b/>altri</l><r>gli<b/>altri<s n="prn"/><s n="tn"/><s n="m"/><s n="pl"/></r></p></e>
@@ -13275,7 +13295,7 @@
 
 
 <pardef n="medicine__n">
-  <e>       <p><l></l>          <r>e<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
+  <e>       <p><l></l>          <r><s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 </pardef>
 
        
@@ -13419,7 +13439,7 @@
 </pardef>
     
 <pardef n="mille__num">
-  <e>       <p><l></l>          <r><s n="num"/><s n="mf"/><s n="pl"/></r></p></e>
+<!--  <e>       <p><l></l>          <r><s n="num"/><s n="mf"/><s n="pl"/></r></p></e>-->
   <e>       <p><l></l>          <r><s n="num"/><s n="mf"/><s n="sp"/></r></p></e>
 </pardef>
     
@@ -13932,6 +13952,10 @@
 <pardef n="BBVA__n">
   <e>       <p><l></l>          <r><s n="n"/><s n="acr"/><s n="m"/><s n="sg"/></r></p></e>
 </pardef>
+
+<pardef n="ATS__n">
+  <e>       <p><l></l>          <r><s n="n"/><s n="acr"/><s n="mf"/><s n="sp"/></r></p></e>
+</pardef>
     
 <pardef n="PIL__n">
   <e>       <p><l></l>          <r><s n="n"/><s n="acr"/><s n="m"/><s n="sp"/></r></p></e>
@@ -13991,6 +14015,8 @@
 <e lm="un altro">        <par n="/un_altro__det"/></e>
 <e lm="vario">           <i>vari</i><par n="vari/o__det"/></e>
 <e lm="vostro">          <i>vostr</i><par n="vostr/o__det"/></e>
+<e lm="gli altri">        <par n="/gli_altri__prn"/></e>
+
     <!-- ******************************
           group prn
       ****************************** -->
@@ -14009,6 +14035,7 @@
 <e lm="alcuno">          <i>alcun</i><par n="altr/o__prn"/></e>
 <e lm="alcunché">        <i>alcunché</i><par n="qualcosa__prn"/></e>
 <e lm="altro">           <i>altr</i><par n="altr/o__prn"/></e>
+<e lm="un altro">        <i/><par n="/un_altro__prn"/></e>
 <e lm="ce">              <i>ce</i><par n="ne__prn"/></e>
 <e lm="che">      <i>che</i><par n="che__prn"/></e>
 <e lm="chi">             <i>chi</i><par n="chi__prn"/></e>
@@ -14086,13 +14113,13 @@
           group rel
       ****************************** -->
 <e r="RL" lm="come">     <p><l><a/>come</l>  <r>come</r></p><par n="dove__rel"/></e>
-<e r="RL" lm="dove">     <p><l><a/>dove</l>  <r>dove</r></p><par n="dove__rel"/></e>
-<e r="RL" lm="quanto">   <p><l><a/>quanto</l><r>quanto</r></p><par n="quant/o__rel"/></e>
+<e r="RL" lm="quanto">   <p><l><a/>quant</l><r>quant</r></p><par n="quant/o__rel"/></e>
 <e lm="che">             <i>che</i><par n="che__rel"/></e>
 <e lm="chi">             <i>chi</i><par n="chi__rel"/></e>
 <e r="LR" lm="come">     <i>come</i><par n="dove__rel"/></e>
 <e lm="cui">             <par n="/il_cui__rel"/></e>
 <e r="LR" lm="dove">     <i>dove</i><par n="dove__rel"/></e>
+<e r="RL" lm="dove">     <p><l><a/>dove</l><r>dove</r></p><par n="dove__rel"/></e>
 <e lm="il che">          <i>il che</i><par n="il_che__rel"/></e>
 <e lm="il cui">          <par n="/il_cui__rel"/></e>
 <e lm="il quale">        <par n="/il_quale__rel"/></e>
@@ -14100,11 +14127,483 @@
 <e lm="col quale">       <i>co</i><par n="ne/l_quale__rel"/></e>
 <e lm="quale">           <i>qual</i><par n="qual/e__rel"/></e>
 <e lm="quando">          <i>quando</i><par n="dove__rel"/></e>
-<e r="LR" lm="quanto">   <i>quanto</i><par n="quant/o__rel"/></e>
+<e r="LR" lm="quanto">   <i>quant</i><par n="quant/o__rel"/></e>
 <e lm="quello che">      <par n="/quello_che__rel"/></e>
+<e lm="quanto">          <i>quanto</i><par n="dove__rel"/></e>
+
     <!-- ******************************
           group np
       ****************************** -->
+
+    <e lm="Bartulumeau"><i>Bartulumeau</i><par n="Juan__np"/></e>
+    <e lm="Dédé"><i>Dédé</i><par n="Juan__np"/></e>
+    <e lm="Cyril"><i>Cyril</i><par n="Juan__np"/></e>
+    <e lm="Erasme"><i>Erasme</i><par n="Juan__np"/></e>
+    <e lm="Stéphane"><i>Stéphane</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvà"><i>Ghjuvà</i><par n="Juan__np"/></e>
+    <e lm="Dumè"><i>Dumè</i><par n="Juan__np"/></e>
+    <e lm="Titu"><i>Titu</i><par n="Juan__np"/></e>
+    <e lm="Pitagora"><i>Pitagora</i><par n="Juan__np"/></e>
+    <e lm="Ghjaseppu"><i>Ghjaseppu</i><par n="Juan__np"/></e>
+    <e lm="Taylor"><i>Taylor</i><par n="Juan__np"/></e>
+    <e lm="Petru"><i>Petru</i><par n="Juan__np"/></e>
+    <e lm="Paoli"><i>Paoli</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvan"><i>Ghjuvan</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanni"><i>Ghjuvanni</i><par n="Juan__np"/></e>
+    <e lm="Francescu"><i>Francescu</i><par n="Juan__np"/></e>
+    <e lm="Yvan"><i>Yvan</i><par n="Juan__np"/></e>
+    <e lm="Marcu"><i>Marcu</i><par n="Juan__np"/></e>
+    <e lm="Nabulionu"><i>Nabulionu</i><par n="Juan__np"/></e>
+    <e lm="Teseiu"><i>Teseiu</i><par n="Juan__np"/></e>
+    <e lm="Antone"><i>Antone</i><par n="Juan__np"/></e>
+    <e lm="Ghjacumu"><i>Ghjacumu</i><par n="Juan__np"/></e>
+    <e lm="Ippolitu"><i>Ippolitu</i><par n="Juan__np"/></e>
+    <e lm="San"><i>San</i><par n="Juan__np"/></e>
+    <e lm="Santu"><i>Santu</i><par n="Juan__np"/></e>
+    <e lm="Sant"><i>Sant</i><par n="Juan__np"/></e>
+    <e lm="Diu"><i>Diu</i><par n="Juan__np"/></e>
+    <e lm="Messier"><i>Messier</i><par n="Juan__np"/></e>
+    <e lm="Mussiù"><i>Mussiù</i><par n="Juan__np"/></e>
+    <e lm="Cristu"><i>Cristu</i><par n="Juan__np"/></e>
+    <e lm="Erculu"><i>Erculu</i><par n="Juan__np"/></e>
+    <e lm="Puseidonu"><i>Puseidonu</i><par n="Juan__np"/></e>
+    <e lm="Bonifaziu"><i>Bonifaziu</i><par n="Juan__np"/></e>
+    <e lm="Bonifatu"><i>Bonifatu</i><par n="Juan__np"/></e>
+    <e lm="Omeru"><i>Omeru</i><par n="Juan__np"/></e>
+    <e lm="Minotauru"><i>Minotauru</i><par n="Juan__np"/></e>
+    <e lm="Vattelapesca"><i>Vattelapesca</i><par n="Juan__np"/></e>
+    <e lm="Rinatu"><i>Rinatu</i><par n="Juan__np"/></e>
+    <e lm="Samperu"><i>Samperu</i><par n="Juan__np"/></e>
+    <e lm="Ovidiu"><i>Ovidiu</i><par n="Juan__np"/></e>
+    <e lm="Guglielmu"><i>Guglielmu</i><par n="Juan__np"/></e>
+    <e lm="Asclepiu"><i>Asclepiu</i><par n="Juan__np"/></e>
+    <e lm="Alain"><i>Alain</i><par n="Juan__np"/></e>
+    <e lm="Lisandru"><i>Lisandru</i><par n="Juan__np"/></e>
+    <e lm="Tiadoru"><i>Tiadoru</i><par n="Juan__np"/></e>
+    <e lm="Ghjesù"><i>Ghjesù</i><par n="Juan__np"/></e>
+    <e lm="Erodutu"><i>Erodutu</i><par n="Juan__np"/></e>
+    <e lm="Platonu"><i>Platonu</i><par n="Juan__np"/></e>
+    <e lm="Minossu"><i>Minossu</i><par n="Juan__np"/></e>
+    <e lm="Sansonu"><i>Sansonu</i><par n="Juan__np"/></e>
+    <e lm="Carlu"><i>Carlu</i><par n="Juan__np"/></e>
+    <e lm="Anghjulu"><i>Anghjulu</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanpaulu"><i>Ghjuvanpaulu</i><par n="Juan__np"/></e>
+    <e lm="Gareth"><i>Gareth</i><par n="Juan__np"/></e>
+    <e lm="Chaouki"><i>Chaouki</i><par n="Juan__np"/></e>
+    <e lm="Wahbi"><i>Wahbi</i><par n="Juan__np"/></e>
+    <e lm="Ptulemeu"><i>Ptulemeu</i><par n="Juan__np"/></e>
+    <e lm="Micheli"><i>Micheli</i><par n="Juan__np"/></e>
+    <e lm="Sébastien"><i>Sébastien</i><par n="Juan__np"/></e>
+    <e lm="Saveriu"><i>Saveriu</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanfrancescu"><i>Ghjuvanfrancescu</i><par n="Juan__np"/></e>
+    <e lm="Ghjiseppu"><i>Ghjiseppu</i><par n="Juan__np"/></e>
+    <e lm="Yannick"><i>Yannick</i><par n="Juan__np"/></e>
+    <e lm="Stefanu"><i>Stefanu</i><par n="Juan__np"/></e>
+    <e lm="Rémi"><i>Rémi</i><par n="Juan__np"/></e>
+    <e lm="Merle"><i>Merle</i><par n="Juan__np"/></e>
+    <e lm="Jacek"><i>Jacek</i><par n="Juan__np"/></e>
+    <e lm="Gregoriu"><i>Gregoriu</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanpetru"><i>Ghjuvanpetru</i><par n="Juan__np"/></e>
+    <e lm="Ghjanfrancescu"><i>Ghjanfrancescu</i><par n="Juan__np"/></e>
+    <e lm="Gaël"><i>Gaël</i><par n="Juan__np"/></e>
+    <e lm="Cristofanu"><i>Cristofanu</i><par n="Juan__np"/></e>
+    <e lm="Carlinu"><i>Carlinu</i><par n="Juan__np"/></e>
+    <e lm="Bonfigliuolo"><i>Bonfigliuolo</i><par n="Juan__np"/></e>
+    <e lm="Bartulumeu"><i>Bartulumeu</i><par n="Juan__np"/></e>
+    <e lm="Ghjuliu"><i>Ghjuliu</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanclaudiu"><i>Ghjuvanclaudiu</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanbattista"><i>Ghjuvanbattista</i><par n="Juan__np"/></e>
+    <e lm="Ghjuvanghjaseppu"><i>Ghjuvanghjaseppu</i><par n="Juan__np"/></e>
+    <e lm="Marcellu"><i>Marcellu</i><par n="Juan__np"/></e>
+    <e lm="Mighele"><i>Mighele</i><par n="Juan__np"/></e>
+    <e lm="Nicudemu"><i>Nicudemu</i><par n="Juan__np"/></e>
+    <e lm="Pierluigi"><i>Pierluigi</i><par n="Juan__np"/></e>
+    <e lm="Rodéric"><i>Rodéric</i><par n="Juan__np"/></e>
+    <e lm="Yohan"><i>Yohan</i><par n="Juan__np"/></e>
+    <e lm="Xiaodong"><i>Xiaodong</i><par n="Juan__np"/></e>
+    <e lm="Hal"><i>Hal</i><par n="Juan__np"/></e>
+    <e lm="Ceccè"><i>Ceccè</i><par n="Juan__np"/></e>
+    <e lm="Jo"><i>Jo</i><par n="Juan__np"/></e>
+    <e lm="Madama"><i>Madama</i><par n="María__np"/></e>
+    <e lm="Marianghjula"><i>Marianghjula</i><par n="María__np"/></e>
+    <e lm="Mariadumenica"><i>Mariadumenica</i><par n="María__np"/></e>
+    <e lm="Kery"><i>Kery</i><par n="María__np"/></e>
+    <e lm="Farimah"><i>Farimah</i><par n="María__np"/></e>
+    <e lm="Pandora"><i>Pandora</i><par n="María__np"/></e>
+    <e lm="Lelletta"><i>Lelletta</i><par n="María__np"/></e>
+    <e lm="Fiffina"><i>Fiffina</i><par n="María__np"/></e>
+    <e lm="Taylor"><i>Taylor</i><par n="María__np"/></e>
+    <e lm="Ghjulia"><i>Ghjulia</i><par n="María__np"/></e>
+    <e lm="Paulina"><i>Paulina</i><par n="María__np"/></e>
+    <e lm="Artemidi"><i>Artemidi</i><par n="María__np"/></e>
+    <e lm="Santa"><i>Santa</i><par n="María__np"/></e>
+    <e lm="Afrudita"><i>Afrudita</i><par n="María__np"/></e>
+    <e lm="Lucciana"><i>Lucciana</i><par n="María__np"/></e>
+    <e lm="Poletti"><i>Poletti</i><par n="Díez__np"/></e>
+    <e lm="Rocchi"><i>Rocchi</i><par n="Díez__np"/></e>
+    <e lm="Guelfucci"><i>Guelfucci</i><par n="Díez__np"/></e>
+    <e lm="Thiers"><i>Thiers</i><par n="Díez__np"/></e>
+    <e lm="Cahuzac"><i>Cahuzac</i><par n="Díez__np"/></e>
+    <e lm="Bale"><i>Bale</i><par n="Díez__np"/></e>
+    <e lm="Fusina"><i>Fusina</i><par n="Díez__np"/></e>
+    <e lm="Gallet"><i>Gallet</i><par n="Díez__np"/></e>
+    <e lm="Fumaroli"><i>Fumaroli</i><par n="Díez__np"/></e>
+    <e lm="Salvini"><i>Salvini</i><par n="Díez__np"/></e>
+    <e lm="Quilici"><i>Quilici</i><par n="Díez__np"/></e>
+    <e lm="Cabella"><i>Cabella</i><par n="Díez__np"/></e>
+    <e lm="Giacobbi"><i>Giacobbi</i><par n="Díez__np"/></e>
+    <e lm="Acquaviva"><i>Acquaviva</i><par n="Díez__np"/></e>
+    <e lm="Vincenti"><i>Vincenti</i><par n="Díez__np"/></e>
+    <e lm="Vescovali"><i>Vescovali</i><par n="Díez__np"/></e>
+    <e lm="Bertolini"><i>Bertolini</i><par n="Díez__np"/></e>
+    <e lm="Simeoni"><i>Simeoni</i><par n="Díez__np"/></e>
+    <e lm="Ramsey"><i>Ramsey</i><par n="Díez__np"/></e>
+    <e lm="Moracchini"><i>Moracchini</i><par n="Díez__np"/></e>
+    <e lm="Jonsson"><i>Jonsson</i><par n="Díez__np"/></e>
+    <e lm="Wesson"><i>Wesson</i><par n="Díez__np"/></e>
+    <e lm="Gunnarsson"><i>Gunnarsson</i><par n="Díez__np"/></e>
+    <e lm="Björnsson"><i>Björnsson</i><par n="Díez__np"/></e>
+    <e lm="Guinness"><i>Guinness</i><par n="Díez__np"/></e>
+    <e lm="Guerrini"><i>Guerrini</i><par n="Díez__np"/></e>
+    <e lm="Gandolfi"><i>Gandolfi</i><par n="Díez__np"/></e>
+    <e lm="Bernardini"><i>Bernardini</i><par n="Díez__np"/></e>
+    <e lm="Valls"><i>Valls</i><par n="Díez__np"/></e>
+    <e lm="Seatelli"><i>Seatelli</i><par n="Díez__np"/></e>
+    <e lm="Rogliano"><i>Rogliano</i><par n="Díez__np"/></e>
+    <e lm="Poggi"><i>Poggi</i><par n="Díez__np"/></e>
+    <e lm="Pastinelli"><i>Pastinelli</i><par n="Díez__np"/></e>
+    <e lm="Pantaloni"><i>Pantaloni</i><par n="Díez__np"/></e>
+    <e lm="Gattaceca"><i>Gattaceca</i><par n="Díez__np"/></e>
+    <e lm="Frassati"><i>Frassati</i><par n="Díez__np"/></e>
+    <e lm="Franceschi"><i>Franceschi</i><par n="Díez__np"/></e>
+    <e lm="Ettori"><i>Ettori</i><par n="Díez__np"/></e>
+    <e lm="Dolovici"><i>Dolovici</i><par n="Díez__np"/></e>
+    <e lm="Ciosi"><i>Ciosi</i><par n="Díez__np"/></e>
+    <e lm="Bonnet"><i>Bonnet</i><par n="Díez__np"/></e>
+    <e lm="Zuccarelli"><i>Zuccarelli</i><par n="Díez__np"/></e>
+    <e lm="Toga"><i>Toga</i><par n="Díez__np"/></e>
+    <e lm="Streisand"><i>Streisand</i><par n="Díez__np"/></e>
+    <e lm="Serpentini"><i>Serpentini</i><par n="Díez__np"/></e>
+    <e lm="Romario"><i>Romario</i><par n="Díez__np"/></e>
+    <e lm="Pomponi"><i>Pomponi</i><par n="Díez__np"/></e>
+    <e lm="Pietri"><i>Pietri</i><par n="Díez__np"/></e>
+    <e lm="Pierrot"><i>Pierrot</i><par n="Díez__np"/></e>
+    <e lm="Piazzola"><i>Piazzola</i><par n="Díez__np"/></e>
+    <e lm="Peretti"><i>Peretti</i><par n="Díez__np"/></e>
+    <e lm="Miniconi"><i>Miniconi</i><par n="Díez__np"/></e>
+    <e lm="McKinley"><i>McKinley</i><par n="Díez__np"/></e>
+    <e lm="Maroselli"><i>Maroselli</i><par n="Díez__np"/></e>
+    <e lm="Mariini"><i>Mariini</i><par n="Díez__np"/></e>
+    <e lm="Lippini"><i>Lippini</i><par n="Díez__np"/></e>
+    <e lm="Guiness"><i>Guiness</i><par n="Díez__np"/></e>
+    <e lm="Giacomoni"><i>Giacomoni</i><par n="Díez__np"/></e>
+    <e lm="Gauthier"><i>Gauthier</i><par n="Díez__np"/></e>
+    <e lm="Danic"><i>Danic</i><par n="Díez__np"/></e>
+    <e lm="Bocognano"><i>Bocognano</i><par n="Díez__np"/></e>
+    <e lm="Biancarelli"><i>Biancarelli</i><par n="Díez__np"/></e>
+    <e lm="Baccarelli"><i>Baccarelli</i><par n="Díez__np"/></e>
+    <e lm="Antonetti"><i>Antonetti</i><par n="Díez__np"/></e>
+    <e lm="Abbatucci"><i>Abbatucci</i><par n="Díez__np"/></e>
+    <e lm="Andersen"><i>Andersen</i><par n="Díez__np"/></e>
+    <e lm="O'Hara"><i>O'Hara</i><par n="Díez__np"/></e>
+    <e lm="O'Malley"><i>O'Malley</i><par n="Díez__np"/></e>
+    <e lm="O'Toole"><i>O'Toole</i><par n="Díez__np"/></e>
+    <e lm="Liviu"><i>Liviu</i><par n="Díez__np"/></e>
+    <e lm="Gutenberg"><i>Gutenberg</i><par n="Díez__np"/></e>
+    <e lm="Gyatso"><i>Gyatso</i><par n="Díez__np"/></e>
+    <e lm="Nehru"><i>Nehru</i><par n="Díez__np"/></e>
+    <e lm="Matisse"><i>Matisse</i><par n="Díez__np"/></e>
+    <e lm="Neuhoff"><i>Neuhoff</i><par n="Díez__np"/></e>
+    <e lm="Hermann"><i>Hermann</i><par n="Juan__np"/></e>
+    <e lm="Adolphe"><i>Adolphe</i><par n="Juan__np"/></e>
+    <e lm="Monsieur"><i>Monsieur</i><par n="Juan__np"/></e>
+    <e lm="Monsignori"><i>Monsignori</i><par n="Juan__np"/></e>
+    <e lm="Don"><i>Don</i><par n="Juan__np"/></e>
+    <e lm="Colonna"><i>Colonna</i><par n="Díez__np"/></e>
+    <e lm="Ciciaronu"><i>Ciciaronu</i><par n="Díez__np"/></e>
+    <e lm="Ciciaronu"><i>Ciciaronu</i><par n="Díez__np"/></e>
+    <e lm="Luccioni"><i>Luccioni</i><par n="Díez__np"/></e>
+    <e lm="Luccioni"><i>Luccioni</i><par n="Díez__np"/></e>
+    <e lm="Carnot"><i>Carnot</i><par n="Díez__np"/></e>
+    <e lm="Conrad"><i>Conrad</i><par n="Juan__np"/></e>
+    <e lm="Ghjove"><i>Ghjove</i><par n="Juan__np"/></e>
+    <e lm="Paulo"><i>Paulo</i><par n="Juan__np"/></e>
+    <e lm="Bunifaziu"><i>Bunifaziu</i><par n="Juan__np"/></e>
+    <e lm="Apollu"><i>Apollu</i><par n="Juan__np"/></e>
+    <e lm="Filippu"><i>Filippu</i><par n="Juan__np"/></e>
+    <e lm="Matteiu"><i>Matteiu</i><par n="Juan__np"/></e>
+    <e lm="Valentinu"><i>Valentinu</i><par n="Juan__np"/></e>
+    <e lm="Borgia"><i>Borgia</i><par n="Díez__np"/></e>
+    <e lm="Newton"><i>Newton</i><par n="Díez__np"/></e>
+    <e lm="Malthus"><i>Malthus</i><par n="Díez__np"/></e>
+    <e lm="Magellanu"><i>Magellanu</i><par n="Díez__np"/></e>
+    <e lm="Rutherford"><i>Rutherford</i><par n="Díez__np"/></e>
+    <e lm="Sartre"><i>Sartre</i><par n="Díez__np"/></e>
+    <e lm="English"><i>English</i><par n="Díez__np"/></e>
+    <e lm="Chamberlain"><i>Chamberlain</i><par n="Díez__np"/></e>
+    <e lm="Cameron"><i>Cameron</i><par n="Díez__np"/></e>
+    <e lm="Hudson"><i>Hudson</i><par n="Díez__np"/></e>
+    <e lm="Beauvoir"><i>Beauvoir</i><par n="Díez__np"/></e>
+    <e lm="Major"><i>Major</i><par n="Díez__np"/></e>
+    <e lm="Keynes"><i>Keynes</i><par n="Díez__np"/></e>
+    <e lm="Kant"><i>Kant</i><par n="Díez__np"/></e>
+    <e lm="Antoine"><i>Antoine</i><par n="Juan__np"/></e>
+    <e lm="Didier"><i>Didier</i><par n="Juan__np"/></e>
+    <e lm="Rey"><i>Rey</i><par n="Juan__np"/></e>
+    <e lm="Vidal"><i>Vidal</i><par n="Juan__np"/></e>
+    <e lm="Luc"><i>Luc</i><par n="Juan__np"/></e>
+    <e lm="Devota"><i>Devota</i><par n="María__np"/></e>
+    <e lm="Travis"><i>Travis</i><par n="Juan__np"/></e>
+    <e lm="Tina"><i>Tina</i><par n="María__np"/></e>
+    <e lm="SOL"><i>SOL</i><par n="María__np"/></e>
+    <e lm="Marge"><i>Marge</i><par n="María__np"/></e>
+    <e lm="Justin"><i>Justin</i><par n="Juan__np"/></e>
+    <e lm="Jameson"><i>Jameson</i><par n="Juan__np"/></e>
+    <e lm="Axel"><i>Axel</i><par n="Juan__np"/></e>
+    <e lm="Audrey"><i>Audrey</i><par n="María__np"/></e>
+    <e lm="Abraham"><i>Abraham</i><par n="Juan__np"/></e>
+    <e lm="Aaron"><i>Aaron</i><par n="Juan__np"/></e>
+    <e lm="Whitney"><i>Whitney</i><par n="María__np"/></e>
+    <e lm="Thierry"><i>Thierry</i><par n="Juan__np"/></e>
+    <e lm="Stefani"><i>Stefani</i><par n="María__np"/></e>
+    <e lm="Sonny"><i>Sonny</i><par n="Juan__np"/></e>
+    <e lm="Ronald"><i>Ronald</i><par n="Juan__np"/></e>
+    <e lm="River"><i>River</i><par n="Juan__np"/></e>
+    <e lm="Remington"><i>Remington</i><par n="Juan__np"/></e>
+    <e lm="Paris"><i>Paris</i><par n="María__np"/></e>
+    <e lm="Neil"><i>Neil</i><par n="Juan__np"/></e>
+    <e lm="Miracle"><i>Miracle</i><par n="María__np"/></e>
+    <e lm="Marcel"><i>Marcel</i><par n="Juan__np"/></e>
+    <e lm="Lothar"><i>Lothar</i><par n="Juan__np"/></e>
+    <e lm="Keegan"><i>Keegan</i><par n="Juan__np"/></e>
+    <e lm="Jurgen"><i>Jurgen</i><par n="Juan__np"/></e>
+    <e lm="Julio"><i>Julio</i><par n="Juan__np"/></e>
+    <e lm="Johan"><i>Johan</i><par n="Juan__np"/></e>
+    <e lm="Jeremy"><i>Jeremy</i><par n="Juan__np"/></e>
+    <e lm="Jenifer"><i>Jenifer</i><par n="María__np"/></e>
+    <e lm="Jacky"><i>Jacky</i><par n="María__np"/></e>
+    <e lm="Houston"><i>Houston</i><par n="Juan__np"/></e>
+    <e lm="Gigi"><i>Gigi</i><par n="María__np"/></e>
+    <e lm="Emmanuelle"><i>Emmanuelle</i><par n="Juan__np"/></e>
+    <e lm="Emil"><i>Emil</i><par n="Juan__np"/></e>
+    <e lm="Duane"><i>Duane</i><par n="Juan__np"/></e>
+    <e lm="Dorothy"><i>Dorothy</i><par n="María__np"/></e>
+    <e lm="Dominique"><i>Dominique</i><par n="Juan__np"/></e>
+    <e lm="Dominique"><i>Dominique</i><par n="María__np"/></e>
+    <e lm="Coleman"><i>Coleman</i><par n="Juan__np"/></e>
+    <e lm="Chelsea"><i>Chelsea</i><par n="María__np"/></e>
+    <e lm="Cesar"><i>Cesar</i><par n="Juan__np"/></e>
+    <e lm="Casta"><i>Casta</i><par n="María__np"/></e>
+    <e lm="Camille"><i>Camille</i><par n="María__np"/></e>
+    <e lm="Branco"><i>Branco</i><par n="Juan__np"/></e>
+    <e lm="Bailey"><i>Bailey</i><par n="Juan__np"/></e>
+    <e lm="Bailey"><i>Bailey</i><par n="María__np"/></e>
+    <e lm="Ashley"><i>Ashley</i><par n="María__np"/></e>
+    <e lm="Abram"><i>Abram</i><par n="Juan__np"/></e>
+    <e lm="Laurent"><i>Laurent</i><par n="Juan__np"/></e>
+    <e lm="Pascal"><i>Pascal</i><par n="Juan__np"/></e>
+    <e lm="Gilles"><i>Gilles</i><par n="Juan__np"/></e>
+    <e lm="Gérard"><i>Gérard</i><par n="Juan__np"/></e>
+    <e lm="Yves"><i>Yves</i><par n="Juan__np"/></e>
+    <e lm="Jérôme"><i>Jérôme</i><par n="Juan__np"/></e>
+    <e lm="Fabien"><i>Fabien</i><par n="Juan__np"/></e>
+    <e lm="Etienne"><i>Etienne</i><par n="Juan__np"/></e>
+    <e lm="Christophe"><i>Christophe</i><par n="Juan__np"/></e>
+    <e lm="Noël"><i>Noël</i><par n="Juan__np"/></e>
+    <e lm="Marius"><i>Marius</i><par n="Juan__np"/></e>
+    <e lm="Léa"><i>Léa</i><par n="Juan__np"/></e>
+    <e lm="Juppé"><i>Juppé</i><par n="Juan__np"/></e>
+    <e lm="Hubert"><i>Hubert</i><par n="Juan__np"/></e>
+    <e lm="Franck"><i>Franck</i><par n="Juan__np"/></e>
+    <e lm="Emile"><i>Emile</i><par n="Juan__np"/></e>
+    <e lm="Arnaud"><i>Arnaud</i><par n="Juan__np"/></e>
+    <e lm="Cruyff"><i>Cruyff</i><par n="Juan__np"/></e>
+    <e lm="Niklas"><i>Niklas</i><par n="Juan__np"/></e>
+    <e lm="Vince"><i>Vince</i><par n="Juan__np"/></e>
+    <e lm="Andrei"><i>Andrei</i><par n="Juan__np"/></e>
+    <e lm="Henrique"><i>Henrique</i><par n="Juan__np"/></e>
+    <e lm="Matilda"><i>Matilda</i><par n="María__np"/></e>
+    <e lm="Lourdes"><i>Lourdes</i><par n="María__np"/></e>
+    <e lm="Just"><i>Just</i><par n="Díez__np"/></e>
+    <e lm="Peri"><i>Peri</i><par n="Díez__np"/></e>
+    <e lm="Zubizarreta"><i>Zubizarreta</i><par n="Díez__np"/></e>
+    <e lm="Laudrup"><i>Laudrup</i><par n="Díez__np"/></e>
+    <e lm="Jornet"><i>Jornet</i><par n="Díez__np"/></e>
+    <e lm="Berenguer"><i>Berenguer</i><par n="Díez__np"/></e>
+    <e lm="Bayrou"><i>Bayrou</i><par n="Díez__np"/></e>
+    <e lm="Roch"><i>Roch</i><par n="Díez__np"/></e>
+    <e lm="Hollande"><i>Hollande</i><par n="Díez__np"/></e>
+    <e lm="Grimaldi"><i>Grimaldi</i><par n="Díez__np"/></e>
+    <e lm="Campà"><i>Campà</i><par n="Díez__np"/></e>
+    <e lm="Wang"><i>Wang</i><par n="Díez__np"/></e>
+    <e lm="Achilli"><i>Achilli</i><par n="Díez__np"/></e>
+    <e lm="Agostini"><i>Agostini</i><par n="Díez__np"/></e>
+    <e lm="Aine"><i>Aine</i><par n="Díez__np"/></e>
+    <e lm="Alfonsi"><i>Alfonsi</i><par n="Díez__np"/></e>
+    <e lm="Allegrini"><i>Allegrini</i><par n="Díez__np"/></e>
+    <e lm="Aulas"><i>Aulas</i><par n="Díez__np"/></e>
+    <e lm="Auzoulay"><i>Auzoulay</i><par n="Díez__np"/></e>
+    <e lm="Azoulay"><i>Azoulay</i><par n="Díez__np"/></e>
+    <e lm="Baggio"><i>Baggio</i><par n="Díez__np"/></e>
+    <e lm="Ballantine"><i>Ballantine</i><par n="Díez__np"/></e>
+    <e lm="Barrabé"><i>Barrabé</i><par n="Díez__np"/></e>
+    <e lm="Baylet"><i>Baylet</i><par n="Díez__np"/></e>
+    <e lm="Belgodere"><i>Belgodere</i><par n="Díez__np"/></e>
+    <e lm="Bern"><i>Bern</i><par n="Díez__np"/></e>
+    <e lm="Bieber"><i>Bieber</i><par n="Díez__np"/></e>
+    <e lm="Blanc"><i>Blanc</i><par n="Díez__np"/></e>
+    <e lm="Bonelli"><i>Bonelli</i><par n="Díez__np"/></e>
+    <e lm="Bouillon"><i>Bouillon</i><par n="Díez__np"/></e>
+    <e lm="Branson"><i>Branson</i><par n="Díez__np"/></e>
+    <e lm="Bruel"><i>Bruel</i><par n="Díez__np"/></e>
+    <e lm="Brunini"><i>Brunini</i><par n="Díez__np"/></e>
+    <e lm="Burnier"><i>Burnier</i><par n="Díez__np"/></e>
+    <e lm="Buteau"><i>Buteau</i><par n="Díez__np"/></e>
+    <e lm="Cabrel"><i>Cabrel</i><par n="Díez__np"/></e>
+    <e lm="Cacciaguerra"><i>Cacciaguerra</i><par n="Díez__np"/></e>
+    <e lm="Camadini"><i>Camadini</i><par n="Díez__np"/></e>
+    <e lm="Cardi"><i>Cardi</i><par n="Díez__np"/></e>
+    <e lm="Carrington"><i>Carrington</i><par n="Díez__np"/></e>
+    <e lm="Casalta"><i>Casalta</i><par n="Díez__np"/></e>
+    <e lm="Casiraghi"><i>Casiraghi</i><par n="Díez__np"/></e>
+    <e lm="Cervetti"><i>Cervetti</i><par n="Díez__np"/></e>
+    <e lm="Cesari"><i>Cesari</i><par n="Díez__np"/></e>
+    <e lm="Cioni"><i>Cioni</i><par n="Díez__np"/></e>
+    <e lm="Clavier"><i>Clavier</i><par n="Díez__np"/></e>
+    <e lm="Cook"><i>Cook</i><par n="Díez__np"/></e>
+    <e lm="Coppolani"><i>Coppolani</i><par n="Díez__np"/></e>
+    <e lm="Coulibaly"><i>Coulibaly</i><par n="Díez__np"/></e>
+    <e lm="Culumbanu"><i>Culumbanu</i><par n="Díez__np"/></e>
+    <e lm="Daftary"><i>Daftary</i><par n="Díez__np"/></e>
+    <e lm="Zakarian"><i>Zakarian</i><par n="Díez__np"/></e>
+    <e lm="Diani"><i>Diani</i><par n="Díez__np"/></e>
+    <e lm="Difraya"><i>Difraya</i><par n="Díez__np"/></e>
+    <e lm="Drucker"><i>Drucker</i><par n="Díez__np"/></e>
+    <e lm="Elrod"><i>Elrod</i><par n="Díez__np"/></e>
+    <e lm="Eluard"><i>Eluard</i><par n="Díez__np"/></e>
+    <e lm="Eouzan"><i>Eouzan</i><par n="Díez__np"/></e>
+    <e lm="Eto"><i>Eto</i><par n="Díez__np"/></e>
+    <e lm="Exbrayat"><i>Exbrayat</i><par n="Díez__np"/></e>
+    <e lm="Federici"><i>Federici</i><par n="Díez__np"/></e>
+    <e lm="Ferdinandi"><i>Ferdinandi</i><par n="Díez__np"/></e>
+    <e lm="Ferranti"><i>Ferranti</i><par n="Díez__np"/></e>
+    <e lm="Ferrat"><i>Ferrat</i><par n="Díez__np"/></e>
+    <e lm="Filippi"><i>Filippi</i><par n="Díez__np"/></e>
+    <e lm="Fiurenzu"><i>Fiurenzu</i><par n="Díez__np"/></e>
+    <e lm="Flori"><i>Flori</i><par n="Díez__np"/></e>
+    <e lm="Fraisse"><i>Fraisse</i><par n="Díez__np"/></e>
+    <e lm="Fugain"><i>Fugain</i><par n="Díez__np"/></e>
+    <e lm="Furtuna"><i>Furtuna</i><par n="Díez__np"/></e>
+    <e lm="Gaffori"><i>Gaffori</i><par n="Díez__np"/></e>
+    <e lm="Gambini"><i>Gambini</i><par n="Díez__np"/></e>
+    <e lm="Garatte"><i>Garatte</i><par n="Díez__np"/></e>
+    <e lm="Gineste"><i>Gineste</i><par n="Díez__np"/></e>
+    <e lm="Giustiniani"><i>Giustiniani</i><par n="Díez__np"/></e>
+    <e lm="Gori"><i>Gori</i><par n="Díez__np"/></e>
+    <e lm="Gottardi"><i>Gottardi</i><par n="Díez__np"/></e>
+    <e lm="Guéant"><i>Guéant</i><par n="Díez__np"/></e>
+    <e lm="Guetta"><i>Guetta</i><par n="Díez__np"/></e>
+    <e lm="Guglielmi"><i>Guglielmi</i><par n="Díez__np"/></e>
+    <e lm="Guiteau"><i>Guiteau</i><par n="Díez__np"/></e>
+    <e lm="Hanouna"><i>Hanouna</i><par n="Díez__np"/></e>
+    <e lm="Hanson"><i>Hanson</i><par n="Díez__np"/></e>
+    <e lm="Houiller"><i>Houiller</i><par n="Díez__np"/></e>
+    <e lm="Joxe"><i>Joxe</i><par n="Díez__np"/></e>
+    <e lm="Khazri"><i>Khazri</i><par n="Díez__np"/></e>
+    <e lm="Kohler"><i>Kohler</i><par n="Díez__np"/></e>
+    <e lm="Kopa"><i>Kopa</i><par n="Díez__np"/></e>
+    <e lm="Kostadinov"><i>Kostadinov</i><par n="Díez__np"/></e>
+    <e lm="Lahaye"><i>Lahaye</i><par n="Díez__np"/></e>
+    <e lm="Larqué"><i>Larqué</i><par n="Díez__np"/></e>
+    <e lm="Leccia"><i>Leccia</i><par n="Díez__np"/></e>
+    <e lm="Lenck"><i>Lenck</i><par n="Díez__np"/></e>
+    <e lm="Leonelli"><i>Leonelli</i><par n="Díez__np"/></e>
+    <e lm="Leonetti"><i>Leonetti</i><par n="Díez__np"/></e>
+    <e lm="Lepidi"><i>Lepidi</i><par n="Díez__np"/></e>
+    <e lm="Levenard"><i>Levenard</i><par n="Díez__np"/></e>
+    <e lm="Lévenard"><i>Lévenard</i><par n="Díez__np"/></e>
+    <e lm="Lorenzoni"><i>Lorenzoni</i><par n="Díez__np"/></e>
+    <e lm="Loughlin"><i>Loughlin</i><par n="Díez__np"/></e>
+    <e lm="Lucchini"><i>Lucchini</i><par n="Díez__np"/></e>
+    <e lm="Luciani"><i>Luciani</i><par n="Díez__np"/></e>
+    <e lm="Mac"><i>Mac</i><par n="Díez__np"/></e>
+    <e lm="Macedo"><i>Macedo</i><par n="Díez__np"/></e>
+    <e lm="Macias"><i>Macias</i><par n="Díez__np"/></e>
+    <e lm="Magnu"><i>Magnu</i><par n="Díez__np"/></e>
+    <e lm="Marangoni"><i>Marangoni</i><par n="Díez__np"/></e>
+    <e lm="Marchini"><i>Marchini</i><par n="Díez__np"/></e>
+    <e lm="Marielli"><i>Marielli</i><par n="Díez__np"/></e>
+    <e lm="Matth"><i>Matth</i><par n="Díez__np"/></e>
+    <e lm="McEvoy"><i>McEvoy</i><par n="Díez__np"/></e>
+    <e lm="Menconi"><i>Menconi</i><par n="Díez__np"/></e>
+    <e lm="Montepianu"><i>Montepianu</i><par n="Díez__np"/></e>
+    <e lm="Morane"><i>Morane</i><par n="Díez__np"/></e>
+    <e lm="Morning"><i>Morning</i><par n="Díez__np"/></e>
+    <e lm="Mosali"><i>Mosali</i><par n="Díez__np"/></e>
+    <e lm="Murati"><i>Murati</i><par n="Díez__np"/></e>
+    <e lm="Muselli"><i>Muselli</i><par n="Díez__np"/></e>
+    <e lm="Natali"><i>Natali</i><par n="Díez__np"/></e>
+    <e lm="Nativi"><i>Nativi</i><par n="Díez__np"/></e>
+    <e lm="Neruda"><i>Neruda</i><par n="Díez__np"/></e>
+    <e lm="Nicoli"><i>Nicoli</i><par n="Díez__np"/></e>
+    <e lm="Oliel"><i>Oliel</i><par n="Díez__np"/></e>
+    <e lm="Olivesi"><i>Olivesi</i><par n="Díez__np"/></e>
+    <e lm="Olliel"><i>Olliel</i><par n="Díez__np"/></e>
+    <e lm="Olmeta"><i>Olmeta</i><par n="Díez__np"/></e>
+    <e lm="Orsatti"><i>Orsatti</i><par n="Díez__np"/></e>
+    <e lm="Orsoni"><i>Orsoni</i><par n="Díez__np"/></e>
+    <e lm="Orticoni"><i>Orticoni</i><par n="Díez__np"/></e>
+    <e lm="Ottaviani"><i>Ottaviani</i><par n="Díez__np"/></e>
+    <e lm="Ottavi"><i>Ottavi</i><par n="Díez__np"/></e>
+    <e lm="Padovani"><i>Padovani</i><par n="Díez__np"/></e>
+    <e lm="Pallottino"><i>Pallottino</i><par n="Díez__np"/></e>
+    <e lm="Pasqualini"><i>Pasqualini</i><par n="Díez__np"/></e>
+    <e lm="Passos"><i>Passos</i><par n="Díez__np"/></e>
+    <e lm="Pesce"><i>Pesce</i><par n="Díez__np"/></e>
+    <e lm="Petrone"><i>Petrone</i><par n="Díez__np"/></e>
+    <e lm="Petroni"><i>Petroni</i><par n="Díez__np"/></e>
+    <e lm="Pierucci"><i>Pierucci</i><par n="Díez__np"/></e>
+    <e lm="Pietronave"><i>Pietronave</i><par n="Díez__np"/></e>
+    <e lm="Plate"><i>Plate</i><par n="Díez__np"/></e>
+    <e lm="Predali"><i>Predali</i><par n="Díez__np"/></e>
+    <e lm="Raffalli"><i>Raffalli</i><par n="Díez__np"/></e>
+    <e lm="Raposo"><i>Raposo</i><par n="Díez__np"/></e>
+    <e lm="Ristori"><i>Ristori</i><par n="Díez__np"/></e>
+    <e lm="Rocard"><i>Rocard</i><par n="Díez__np"/></e>
+    <e lm="Rodriguez"><i>Rodriguez</i><par n="Díez__np"/></e>
+    <e lm="Rosecchi"><i>Rosecchi</i><par n="Díez__np"/></e>
+    <e lm="Ruquier"><i>Ruquier</i><par n="Díez__np"/></e>
+    <e lm="Saada"><i>Saada</i><par n="Díez__np"/></e>
+    <e lm="Sands"><i>Sands</i><par n="Díez__np"/></e>
+    <e lm="Santelli"><i>Santelli</i><par n="Díez__np"/></e>
+    <e lm="Savalli"><i>Savalli</i><par n="Díez__np"/></e>
+    <e lm="Sekli"><i>Sekli</i><par n="Díez__np"/></e>
+    <e lm="Sialelli"><i>Sialelli</i><par n="Díez__np"/></e>
+    <e lm="Silvani"><i>Silvani</i><par n="Díez__np"/></e>
+    <e lm="Sinet"><i>Sinet</i><par n="Díez__np"/></e>
+    <e lm="Sinibaldi"><i>Sinibaldi</i><par n="Díez__np"/></e>
+    <e lm="Siramy"><i>Siramy</i><par n="Díez__np"/></e>
+    <e lm="Solsona"><i>Solsona</i><par n="Díez__np"/></e>
+    <e lm="Squillaci"><i>Squillaci</i><par n="Díez__np"/></e>
+    <e lm="Suberbielle"><i>Suberbielle</i><par n="Díez__np"/></e>
+    <e lm="Susini"><i>Susini</i><par n="Díez__np"/></e>
+    <e lm="Symonds"><i>Symonds</i><par n="Díez__np"/></e>
+    <e lm="Taddei"><i>Taddei</i><par n="Díez__np"/></e>
+    <e lm="Talamoni"><i>Talamoni</i><par n="Díez__np"/></e>
+    <e lm="Tarantini"><i>Tarantini</i><par n="Díez__np"/></e>
+    <e lm="Tempête"><i>Tempête</i><par n="Díez__np"/></e>
+    <e lm="Thétis"><i>Thétis</i><par n="Díez__np"/></e>
+    <e lm="Tittò"><i>Tittò</i><par n="Díez__np"/></e>
+    <e lm="Tomei"><i>Tomei</i><par n="Díez__np"/></e>
+    <e lm="Tramoni"><i>Tramoni</i><par n="Díez__np"/></e>
+    <e lm="Ugolini"><i>Ugolini</i><par n="Díez__np"/></e>
+    <e lm="Vanucci"><i>Vanucci</i><par n="Díez__np"/></e>
+    <e lm="Vialli"><i>Vialli</i><par n="Díez__np"/></e>
+    <e lm="Weber"><i>Weber</i><par n="Díez__np"/></e>
+    <e lm="Wintour"><i>Wintour</i><par n="Díez__np"/></e>
+    <e lm="Ziober"><i>Ziober</i><par n="Díez__np"/></e>
+
+
 <e lm="ABC">             <i>ABC</i><par n="ABC__np"/></e>
 <e lm="ACB">             <i>ACB</i><par n="ABC__np"/></e>
 <e lm="Abacansk">        <i>Abacansk</i><par n="Afghanistan__np"/></e>
@@ -14644,6 +15143,8 @@
 <e lm="Amelio">          <i>Amelio</i><par n="Juan__np"/></e>
 <e lm="Amenta">          <i>Amenta</i><par n="Díez__np"/></e>
 <e lm="America">         <i>America</i><par n="Europa__np"/></e>
+<e lm="Amatrice">        <i>Amatrice</i><par n="Europa__np"/></e>
+<e lm="Aquila">          <i>Aquila</i><par n="Europa__np"/></e>
 <e lm="America latina">  <i>America<b/>latina</i><par n="Europa__np"/></e>
 <e lm="Amerigo">         <i>Amerigo</i><par n="Juan__np"/></e>
 <e lm="Amerinda">        <i>Amerinda</i><par n="María__np"/></e>
@@ -15106,6 +15607,8 @@
 <e lm="Barumini">        <i>Barumini</i><par n="Afghanistan__np"/></e>
 <e lm="Barumini">        <i>Barumini</i><par n="USA__np"/></e>
 <e lm="Barça">           <i>Barça</i><par n="ABC__np"/></e>
+<e lm="Podemos">         <i>Podemos</i><par n="ABC__np"/></e>
+<e lm="Ciudadanos">      <i>Ciudadanos</i><par n="ABC__np"/></e>
 <e lm="Basile">          <i>Basile</i><par n="Díez__np"/></e>
 <e lm="Basilea">         <i>Basilea</i><par n="María__np"/></e>
 <e lm="Basilea">         <i>Basilea</i><par n="Europa__np"/></e>
@@ -19819,6 +20322,11 @@
 <e lm="Rossello">        <i>Rossello</i><par n="Juan__np"/></e>
 <e lm="Rossetti">        <i>Rossetti</i><par n="Díez__np"/></e>
 <e lm="Rossi">           <i>Rossi</i><par n="Díez__np"/></e>
+<e lm="Bocca">           <i>Bocca</i><par n="Díez__np"/></e>
+<e lm="Vinci">           <i>Vinci</i><par n="Díez__np"/></e>
+<e lm="Raggi">           <i>Raggi</i><par n="Díez__np"/></e>
+<e lm="Fico">            <i>Fico</i><par n="Díez__np"/></e>
+<e lm="Vespa">           <i>Vespa</i><par n="Díez__np"/></e>
 <e lm="Rotari">          <i>Rotari</i><par n="Juan__np"/></e>
 <e lm="Rotarito">        <i>Rotarito</i><par n="Juan__np"/></e>
 <e lm="Rourke">          <i>Rourke</i><par n="Díez__np"/></e>
@@ -19940,6 +20448,7 @@
 <e lm="San Teodoro">     <i>San<b/>Teodoro</i><par n="Afghanistan__np"/></e>
 <e lm="San Vero Milis">  <i>San<b/>Vero<b/>Milis</i><par n="Afghanistan__np"/></e>
 <e lm="San Vito">        <i>San<b/>Vito</i><par n="Afghanistan__np"/></e>
+<e lm="San Vito lo Capo"><i>San<b/>Vito<b/>lo<b/>Capo</i><par n="Afghanistan__np"/></e>
 <e lm="Sanchez">         <i>Sanchez</i><par n="Díez__np"/></e>
 <e lm="Sanders">         <i>Sanders</i><par n="Díez__np"/></e>
 <e lm="Sandra">          <i>Sandra</i><par n="María__np"/></e>
@@ -21425,7 +21934,7 @@
 <e lm="CSS">             <i>CSS</i><par n="BBVA__n"/></e>
 <e lm="CV">              <i>CV</i><par n="BBVA__n"/></e>
 <e lm="Dr">              <i>D</i><par n="D/r__n"/></e>
-<e lm="DJ">              <i>DJ</i><par n="BBVA__n"/></e>
+<e lm="DJ">              <i>DJ</i><par n="ATS__n"/></e>
 <e lm="DNA">             <i>DNA</i><par n="BBVA__n"/></e>
 <e lm="DVD">             <i>DVD</i><par n="BBVA__n"/></e>
 <e lm="ETA">             <i>ETA</i><par n="BBVA__n"/></e>
@@ -21445,7 +21954,6 @@
 <e lm="Ici" c="Imposta Comunale sugli Immobili"><i>Ici</i><par n="TV__n"/></e>
 <e lm="Ictu" c="Irish Congress of Trade Unions"><i>Ictu</i><par n="BBVA__n"/></e>
 <e lm="Idaho">           <i>Idaho</i><par n="abilità__n"/></e>
-<e lm="Inquisizione">    <i>Inquisizion</i><par n="abbreviazion/e__n"/></e>
 <e lm="Institute">       <i>Institute</i><par n="abilità__n"/></e>
 <e lm="International">   <i>International</i><par n="abilità__n"/></e>
 <e lm="Ipsos">           <i>Ipsos</i><par n="BBVA__n"/></e>
@@ -21466,6 +21974,7 @@
 <e lm="NGC">             <i>NGC</i><par n="TV__n"/></e>
 <e lm="NHL">             <i>NHL</i><par n="TV__n"/></e>
 <e lm="OCSE">            <i>OCSE</i><par n="BBVA__n"/></e>
+<e lm="ATS">             <i>ATS</i><par n="ATS__n"/></e>
 <e lm="ONU">             <i>ONU</i><par n="TV__n"/></e>
 <e lm="OPEC">            <i>OPEC</i><par n="TV__n"/></e>
 <e lm="OSCE">            <i>OSCE</i><par n="TV__n"/></e>
@@ -21673,6 +22182,7 @@
 <e lm="acquedotto">      <i>acquedott</i><par n="abbain/o__n"/></e>
 <e lm="acquerello">      <i>acquerell</i><par n="abbain/o__n"/></e>
 <e lm="acquiescenza">    <i>acquiescenz</i><par n="cas/a__n"/></e>
+<e lm="acutezza">        <i>acutezz</i><par n="cas/a__n"/></e>
 <e lm="acquirente">      <i>acquirent</i><par n="albanes/e__n"/></e>
 <e lm="acquisizione">    <i>acquisizion</i><par n="abbreviazion/e__n"/></e>
 <e lm="acquisto">        <i>acquist</i><par n="abbain/o__n"/></e>
@@ -22109,6 +22619,7 @@
 <e lm="annacquamento">   <i>annacquament</i><par n="abbain/o__n"/></e>
 <e lm="annale">          <i>annal</i><par n="abat/e__n"/></e>
 <e lm="annata">          <i>annat</i><par n="cas/a__n"/></e>
+<e lm="francesata">      <i>francesat</i><par n="cas/a__n"/></e>
 <e lm="annegamento">     <i>annegament</i><par n="abbain/o__n"/></e>
 <e lm="annegato">        <i>annegat</i><par n="bambin/o__n"/></e>
 <e lm="annesso">         <i>anness</i><par n="abbain/o__n"/></e>
@@ -22266,7 +22777,7 @@
 <e lm="aranese">         <i>aranes</i><par n="albanes/e__n"/></e>
 <e lm="aratro">          <i>aratr</i><par n="abbain/o__n"/></e>
 <e lm="arazzo">          <i>arazz</i><par n="abbain/o__n"/></e>
-<e lm="arbitro">         <i>arbitr</i><par n="abbain/o__n"/></e>
+<e lm="arbitro">         <i>arbitr</i><par n="sopran/o__n"/></e>
 <e lm="arbitrato">       <i>arbitrat</i><par n="abbain/o__n"/></e>
 <e lm="arbitrio">        <i>arbitri</i><par n="abbain/o__n"/></e>
 <e lm="arbusto">         <i>arbust</i><par n="abbain/o__n"/></e>
@@ -22766,7 +23277,7 @@
 <e lm="bancarottiere">   <i>bancarottier</i><par n="abat/e__n"/></e>
 <e lm="banchetto">       <i>banchett</i><par n="abbain/o__n"/></e>
 <e lm="banchiere">       <i>banchier</i><par n="abat/e__n"/></e>
-<e lm="bancomat">        <i>bancomat</i><par n="PIL__n"/></e>
+<e lm="bancomat">        <i>bancomat</i><par n="albatros__n"/></e>
 <e lm="bancone">         <i>bancon</i><par n="abat/e__n"/></e>
 <e lm="banconota">       <i>banconot</i><par n="cas/a__n"/></e>
 <e lm="banda">           <i>band</i><par n="cas/a__n"/></e>
@@ -23218,7 +23729,7 @@
 <e lm="buongusto">       <i>buongust</i><par n="abbain/o__n"/></e>
 <e lm="buonismo">        <i>buonism</i><par n="abbain/o__n"/></e>
 <e lm="buonista">        <i>buonist</i><par n="suicid/a__n"/></e>
-<e lm="buonsenso">       <i>buonsens</i><par n="abbain/o__n"/></e>
+<e lm="buonsenso">       <i>buonsenso</i><par n="ace__n"/></e>
 <e lm="buontempone">     <i>buontempon</i><par n="abat/e__n"/></e>
 <e lm="buonumore">       <i>buonumor</i><par n="abat/e__n"/></e>
 <e lm="burattino">       <i>burattin</i><par n="abbain/o__n"/></e>
@@ -23770,7 +24281,6 @@
 <e lm="centesimo">       <i>centesim</i><par n="abbain/o__n"/></e>
 <e lm="centimetro">      <i>centimetr</i><par n="abbain/o__n"/></e>
 <e lm="centinaio">       <i>centinai</i><par n="budell/o__n"/></e>
-<e lm="centinaio">       <i>centinai</i><par n="abbagli/o__n"/></e>
 <e lm="centometrista">   <i>centometrist</i><par n="suicid/a__n"/></e>
 <e lm="centone">         <i>centon</i><par n="abat/e__n"/></e>
 <e lm="centro">          <i>centr</i><par n="abbain/o__n"/></e>
@@ -23952,6 +24462,7 @@
 <e lm="cinturone">       <i>cinturon</i><par n="abat/e__n"/></e>
 <e lm="cioccolato">      <i>cioccolat</i><par n="abbain/o__n"/></e>
 <e lm="cioccolato">      <i>cioccolato</i><par n="extra__adj"/></e>
+<e lm="a colori">         <i>a<b/>colori</i><par n="extra__adj"/></e>
 <e lm="cioccolatino">    <i>cioccolatin</i><par n="abbain/o__n"/></e>
 <e lm="ciociaro">        <i>ciociar</i><par n="abbain/o__n"/></e>
 <e lm="ciondolo">        <i>ciondol</i><par n="abbain/o__n"/></e>
@@ -24210,7 +24721,7 @@
 <e lm="commiato">        <i>commiat</i><par n="abbain/o__n"/></e>
 <e lm="commilitone">     <i>commiliton</i><par n="abat/e__n"/></e>
 <e lm="commisione">      <i>commision</i><par n="abbreviazion/e__n"/></e>
-<e lm="commissario">     <i>commissari</i><par n="abbain/o__n"/></e>
+<e lm="commissario">     <i>commissari</i><par n="sopran/o__n"/></e>
 <e lm="commissariamento"><i>commissariament</i><par n="abbain/o__n"/></e>
 <e lm="commissariato">   <i>commissariat</i><par n="abbain/o__n"/></e>
 <e lm="commissione">     <i>commission</i><par n="abbreviazion/e__n"/></e>
@@ -24289,7 +24800,7 @@
 <e lm="comproprietà">    <i>comproprietà</i><par n="abilità__n"/></e>
 <e lm="computo">         <i>comput</i><par n="abbain/o__n"/></e>
 <e lm="computazione">    <i>computazion</i><par n="abbreviazion/e__n"/></e>
-<e lm="computer">        <i>computer</i><par n="affaire__n"/></e>
+<e lm="computer">        <i>computer</i><par n="albatros__n"/></e>
 <e lm="computerizzazione"><i>computerizzazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="comune">          <i>comun</i><par n="abat/e__n"/></e>
 <e lm="comunicabilità">  <i>comunicabilità</i><par n="agibilità__n"/></e>
@@ -24685,6 +25196,7 @@
 <e lm="corleonese">      <i>corleones</i><par n="albanes/e__n"/></e>
 <e lm="cormorano">       <i>cormoran</i><par n="abbain/o__n"/></e>
 <e lm="corno">           <i>corn</i><par n="abbain/o__n"/></e>
+<e lm="scorno">          <i>scorn</i><par n="abbain/o__n"/></e>
 <e lm="cornetto">        <i>cornett</i><par n="abbain/o__n"/></e>
 <e lm="cornice">         <i>cornic</i><par n="abbreviazion/e__n"/></e>
 <e lm="cornicione">      <i>cornicion</i><par n="abat/e__n"/></e>
@@ -25242,7 +25754,6 @@
 <e lm="devoto">          <i>devot</i><par n="bambin/o__n"/></e>
 <e lm="devozione">       <i>devozion</i><par n="abbreviazion/e__n"/></e>
 <e lm="diabete">         <i>diabet</i><par n="abat/e__n"/></e>
-<e lm="diabete">         <i>diabete</i><par n="abilità__n"/></e>
 <e lm="diabetologo">     <i>diabetolog</i><par n="astrolog/o__n"/></e>
 <e lm="diabolico">       <i>diabolic</i><par n="amic/o__n"/></e>
 <e lm="diacono">         <i>diacon</i><par n="abbain/o__n"/></e>
@@ -25413,7 +25924,7 @@
 <e lm="discorso">        <i>discors</i><par n="abbain/o__n"/></e>
 <e lm="discorsetto">     <i>discorsett</i><par n="abbain/o__n"/></e>
 <e lm="discoteca">       <i>discotec</i><par n="tasc/a__n"/></e>
-<e lm="discount margin"> <i>discount<b/>margin</i><par n="albatros__n"/></e>
+<e lm="discount margin"> <i>discount<b/>margin</i><par n="ace__n"/></e>
 <e lm="discredito">      <i>discredit</i><par n="abbain/o__n"/></e>
 <e lm="discrepanza">     <i>discrepanz</i><par n="cas/a__n"/></e>
 <e lm="discrezione">     <i>discrezion</i><par n="abbreviazion/e__n"/></e>
@@ -25580,8 +26091,7 @@
 <e lm="divulgazione">    <i>divulgazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="dizione">         <i>dizion</i><par n="abbreviazion/e__n"/></e>
 <e lm="dizionario">      <i>dizionari</i><par n="abbagli/o__n"/></e>
-<!--
-    <e lm="do"><i>do</i><par n="albatros__n"/></e>-->
+<!--<e lm="do"><i>do</i><par n="albatros__n"/></e>-->
 <e lm="doccia">          <i>docc</i><par n="alzatacc/ia__n"/></e>
 <e lm="docente">         <i>docent</i><par n="albanes/e__n"/></e>
 <e lm="docilità">        <i>docilità</i><par n="abilità__n"/></e>
@@ -25597,7 +26107,7 @@
 <e lm="dogmatismo">      <i>dogmatism</i><par n="abbain/o__n"/></e>
 <e lm="antidogmatismo">      <i>antidogmatism</i><par n="abbain/o__n"/></e>
 <e lm="dolo">            <i>dol</i><par n="abbain/o__n"/></e>
-<e lm="dolce">           <i>dolc</i><par n="fin/e__adj"/></e>
+<e lm="dolce">           <i>dolc</i><par n="abat/e__n"/></e>
 <e lm="dolcetto">        <i>dolcett</i><par n="abbain/o__n"/></e>
 <e lm="dolcezza">        <i>dolcezz</i><par n="cas/a__n"/></e>
 <e lm="dolcificante">    <i>dolcificant</i><par n="abat/e__n"/></e>
@@ -25699,11 +26209,10 @@
 <e lm="durezza">         <i>durezz</i><par n="cas/a__n"/></e>
 <e lm="duttilità">       <i>duttilità</i><par n="abilità__n"/></e>
 <e lm="dvd">             <i>dvd</i><par n="albatros__n"/></e>
-<e lm="dà dipendenza">   <i>dà<b/>dipendenza</i><par n="abilità__n"/></e> <!-- VERIFY -->
 <e lm="dèmone">          <i>dèmon</i><par n="abat/e__n"/></e>
 <e lm="débacle">         <i>débacle</i><par n="abilità__n"/></e>
 <e lm="démone">          <i>démon</i><par n="abat/e__n"/></e>
-<e lm="e-mail">          <i>e-mail</i><par n="blogger__n"/></e>
+<e lm="e-mail">          <i>e-mail</i><par n="abilità__n"/></e>
 <e lm="easing">          <i>easing</i><par n="albatros__n"/></e>
 <e lm="ebano">           <i>eban</i><par n="abbain/o__n"/></e>
 <e lm="ebanista">        <i>ebanist</i><par n="suicid/a__n"/></e>
@@ -25757,7 +26266,7 @@
 <e lm="efebo">           <i>efeb</i><par n="abbain/o__n"/></e>
 <e lm="efferato">        <i>efferat</i><par n="abbain/o__n"/></e>
 <e lm="effetto">         <i>effett</i><par n="abbain/o__n"/></e>
-<e lm="effetto leva">    <i>effet</i><par n="abbain/o__n"/><p><l><b/>leva</l><r><g><b/>leva</g></r></p></e>
+<e lm="effetto leva">    <i>effett</i><par n="abbain/o__n"/><p><l><b/>leva</l><r><g><b/>leva</g></r></p></e>
 <e lm="efficacia">       <i>efficaci</i><par n="cas/a__n"/></e>
 <e lm="efficienza">      <i>efficienz</i><par n="cas/a__n"/></e>
 <e lm="effimero">        <i>effimer</i><par n="bambin/o__n"/></e>
@@ -25881,6 +26390,7 @@
 <e lm="entropia">        <i>entropi</i><par n="cas/a__n"/></e>
 <e lm="entusiasmo">      <i>entusiasm</i><par n="abbain/o__n"/></e>
 <e lm="entusiasta">      <i>entusiast</i><par n="suicid/a__n"/></e>
+<e lm="entusiasta">      <i>entusiast</i><par n="suicid/a__adj"/></e>
 <e lm="enumerazione">    <i>enumerazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="enunciazione">    <i>enunciazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="enzima">          <i>enzim</i><par n="autom/a__n"/></e>
@@ -26113,7 +26623,7 @@
 <e lm="eucarestia">      <i>eucaresti</i><par n="cas/a__n"/></e>
 <e lm="eufemismo">       <i>eufemism</i><par n="abbain/o__n"/></e>
 <e lm="euforia">         <i>eufori</i><par n="cas/a__n"/></e>
-<e lm="euribor">         <i>euribor</i><par n="ace__n"/></e>
+<e lm="euribor">         <i>euribor</i><par n="albatros__n"/></e>
 <e lm="euro">            <i>euro</i><par n="albatros__n"/></e>
 <e lm="eurobbligazione"> <i>eurobbligazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="eurocrato">       <i>eurocrat</i><par n="bambin/o__n"/></e>
@@ -26267,7 +26777,7 @@
 <e lm="fauna">           <i>faun</i><par n="cas/a__n"/></e>
 <e lm="fautore">         <i>faut</i><par n="agricolt/ore__n"/></e>
 <e lm="fava">            <i>fav</i><par n="cas/a__n"/></e>
-<e lm="favela">          <i>favela</i><par n="favela/s__n"/></e>
+<e lm="favela">          <i>favela</i><par n="favela__n"/></e>
 <e lm="favore">          <i>favor</i><par n="abat/e__n"/></e>
 <e lm="favoreggiamento"> <i>favoreggiament</i><par n="abbain/o__n"/></e>
 <e lm="favoreggiatore">  <i>favoreggiator</i><par n="abat/e__n"/></e>
@@ -27100,6 +27610,7 @@
 <e lm="gomitolo">        <i>gomitol</i><par n="abbain/o__n"/></e>
 <e lm="gomma">           <i>gomm</i><par n="cas/a__n"/></e>
 <e lm="gomma da masticare"><i>gomm</i><par n="cas/a__n"/><p><l><b/>da<b/>masticare</l><r><g><b/>da<b/>masticare</g></r></p></e>
+<e lm="occhiali da sole"><i>occhiali</i><par n="scacchi__n"/><p><l><b/>da<b/>sole</l><r><g><b/>da<b/>sole</g></r></p></e>
 <e lm="gommista">        <i>gommist</i><par n="suicid/a__n"/></e>
 <e lm="gommone">         <i>gommon</i><par n="abat/e__n"/></e>
 <e lm="gondoliere">      <i>gondolier</i><par n="abat/e__n"/></e>
@@ -27141,7 +27652,7 @@
 <e lm="graffito">        <i>graffit</i><par n="abbain/o__n"/></e>
 <e lm="graffiti">        <i>graffiti</i><par n="albatros__n"/></e>
 <e lm="grafia">          <i>grafi</i><par n="cas/a__n"/></e>
-<e lm="grafico">         <i>grafic</i><par n="amic/o__n"/></e>
+<e lm="grafico">         <i>grafic</i><par n="abbain/o__n"/></e>
 <e lm="grafica">         <i>grafic</i><par n="tasc/a__n"/></e>
 <e lm="grammo">          <i>gramm</i><par n="abbain/o__n"/></e>
 <e lm="grammatica">      <i>grammatic</i><par n="tasc/a__n"/></e>
@@ -27224,6 +27735,8 @@
 <e lm="guardaroba">      <i>guardaroba</i><par n="albatros__n"/></e>
 <e lm="guardia">         <i>guardi</i><par n="cas/a__n"/></e>
 <e lm="guardia">         <i>guardia</i><par n="albatros__n"/></e>
+<e lm="guardia" r="RL">  <p><l>guardia</l><r>guardia<s n="n"/><s n="m"/><s n="sg"/></r></p></e>
+<e lm="guardia" r="RL">  <p><l>guardia</l><r>guardia<s n="n"/><s n="m"/><s n="pl"/></r></p></e>
 <e lm="guardiano">       <i>guardian</i><par n="bambin/o__n"/></e>
 <e lm="guardone">        <i>guardon</i><par n="infermier/e__n"/></e>
 <e lm="guarigione">      <i>guarigion</i><par n="abbreviazion/e__n"/></e>
@@ -27671,6 +28184,7 @@
 <e lm="ingerenza">       <i>ingerenz</i><par n="cas/a__n"/></e>
 <e lm="ingiunzione">     <i>ingiunzion</i><par n="abbreviazion/e__n"/></e>
 <e lm="ingiustizia">     <i>ingiustizi</i><par n="cas/a__n"/></e>
+<e lm="ingiuria">     <i>ingiuri</i><par n="cas/a__n"/></e>
 <e lm="inglese">         <i>ingles</i><par n="albanes/e__n"/></e>
 <e lm="ingombro">        <i>ingombr</i><par n="abbain/o__n"/></e>
 <e lm="ingordo">         <i>ingord</i><par n="abbain/o__n"/></e>
@@ -28019,7 +28533,9 @@
 <e lm="kenyano">         <i>kenyan</i><par n="bambin/o__n"/></e>
 <e lm="kermesse">        <i>kermesse</i><par n="abilità__n"/></e>
 <e lm="keynesiano">      <i>keynesian</i><par n="bambin/o__n"/></e>
-<e lm="kg">              <i>kg</i><par n="PIL__n"/></e>
+<e lm="kg">              <i>kg</i><par n="albatros__n"/></e>
+<e lm="cm">              <i>cm</i><par n="albatros__n"/></e>
+<e lm="m">              <i>m</i><par n="albatros__n"/></e>
 <e lm="khomeinismo">     <i>khomeinism</i><par n="abbain/o__n"/></e>
 <e lm="khomeinista">     <i>khomeinist</i><par n="suicid/a__n"/></e>
 <e lm="killer">          <i>killer</i><par n="blogger__n"/></e>
@@ -28186,7 +28702,6 @@
 <e lm="leninismo">       <i>leninism</i><par n="abbain/o__n"/></e>
 <e lm="leninista">       <i>leninist</i><par n="suicid/a__n"/></e>
 <e lm="lenone">          <i>lenon</i><par n="abat/e__n"/></e>
-<e lm="lento">           <i>lent</i><par n="abbain/o__n"/></e>
 <e lm="lente">           <i>lent</i><par n="abbreviazion/e__n"/></e>
 <e lm="lenticchia">      <i>lenticchi</i><par n="cas/a__n"/></e>
 <e lm="lentiggine">      <i>lentiggin</i><par n="abbreviazion/e__n"/></e>
@@ -28968,7 +29483,7 @@
 <e lm="mietitore">       <i>mietit</i><par n="agricolt/ore__n"/></e>
 <e lm="miglio" c="unità di misura">          <i>migli</i><par n="bracci/o__n"/></e>
 <e lm="miglio" c="pianta">          <i>migli</i><par n="abbagli/o__n"/></e>
-<e lm="migliaio">        <i>migliai</i><par n="abbagli/o__n"/></e>
+<e lm="migliaio">        <i>migliai</i><par n="bracci/o__n"/></e>
 <e lm="miglioramento">   <i>migliorament</i><par n="abbain/o__n"/></e>
 <e lm="migliorista">     <i>migliorist</i><par n="suicid/a__n"/></e>
 <e lm="mignolo">         <i>mignol</i><par n="abbain/o__n"/></e>
@@ -29638,7 +30153,7 @@
 <e lm="occhietto">       <i>occhiett</i><par n="abbain/o__n"/></e>
 <e lm="occhiolino">      <i>occhiolin</i><par n="abbain/o__n"/></e>
 <e lm="occhione">        <i>occhion</i><par n="abat/e__n"/></e>
-<e lm="occidente">       <i>occident</i><par n="abat/e__n"/></e>
+<e lm="occidente">       <i>occidente</i><par n="ace__n"/></e>
 <e lm="occitano">        <i>occitan</i><par n="bambin/o__n"/></e>
 <e lm="occlusione">      <i>occlusion</i><par n="abbreviazion/e__n"/></e>
 <e lm="occultamento">    <i>occultament</i><par n="abbain/o__n"/></e>
@@ -29791,7 +30306,7 @@
 <e lm="organizzazione">  <i>organizzazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="orgasmo">         <i>orgasm</i><par n="abbain/o__n"/></e>
 <e lm="orgoglio">        <i>orgogli</i><par n="abbagli/o__n"/></e>
-<e lm="oriente">         <i>orient</i><par n="abat/e__n"/></e>
+<e lm="oriente">         <i>oriente</i><par n="ace__n"/></e>
 <e lm="orientalismo">    <i>orientalism</i><par n="abbain/o__n"/></e>
 <e lm="orientalista">    <i>orientalist</i><par n="suicid/a__n"/></e>
 <e lm="orientamento">    <i>orientament</i><par n="abbain/o__n"/></e>
@@ -29872,7 +30387,7 @@
 <e lm="ottenimento">     <i>otteniment</i><par n="abbain/o__n"/></e>
 <e lm="ottimo">          <i>ottim</i><par n="abbain/o__n"/></e>
 <e lm="ottimismo">       <i>ottimism</i><par n="abbain/o__n"/></e>
-<e lm="ottimista">       <i>ottimist</i><par n="altruist/a__adj"/></e>
+<e lm="ottimista">       <i>ottimist</i><par n="suicid/a__adj"/></e>
 <e lm="ottimizzazione">  <i>ottimizzazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="ottobre">         <i>ottobr</i><par n="abat/e__n"/></e>
 <e lm="ottomano">        <i>ottoman</i><par n="bambin/o__n"/></e>
@@ -30546,6 +31061,7 @@
 <e lm="pipistrello">     <i>pipistrell</i><par n="abbain/o__n"/></e>
 <e lm="piramide">        <i>piramid</i><par n="abbreviazion/e__n"/></e>
 <e lm="pirata">          <i>pirat</i><par n="suicid/a__n"/></e>
+<e lm="pirata">          <i>pirata</i><par n="extra__adj"/></e>
 <e lm="pirateria">       <i>pirateri</i><par n="cas/a__n"/></e>
 <e lm="piroga">          <i>pirog</i><par n="tasc/a__n"/></e>
 <e lm="piromane">        <i>piroman</i><par n="abat/e__n"/></e>
@@ -30653,7 +31169,7 @@
 <e lm="politologia">     <i>politologi</i><par n="cas/a__n"/></e>
 <e lm="poliuretano">     <i>poliuretan</i><par n="abbain/o__n"/></e>
 <e lm="polizia">         <i>polizia</i><par n="adrenalina__n"/></e>
-<e lm="poliziotto">      <i>poliziott</i><par n="bambin/o__n"/></e>
+<e lm="poliziotto">      <i>poliziott</i><par n="abbain/o__n"/></e>
 <e lm="polizza">         <i>polizz</i><par n="cas/a__n"/></e>
 <e lm="pollo">           <i>poll</i><par n="abbain/o__n"/></e>
 <e lm="poll-tax">        <i>poll-tax</i><par n="abilità__n"/></e>
@@ -32536,6 +33052,7 @@
 <e lm="scorrimento">     <i>scorriment</i><par n="abbain/o__n"/></e>
 <e lm="scorta">          <i>scort</i><par n="cas/a__n"/></e>
 <e lm="scossa">          <i>scoss</i><par n="cas/a__n"/></e>
+<e lm="riscossa">        <i>riscoss</i><par n="cas/a__n"/></e>
 <e lm="scossone">        <i>scosson</i><par n="abat/e__n"/></e>
 <e lm="scostamento">     <i>scostament</i><par n="abbain/o__n"/></e>
 <e lm="scozzese">        <i>scozzes</i><par n="albanes/e__n"/></e>
@@ -32685,7 +33202,7 @@
 <e lm="sentore">         <i>sentor</i><par n="abat/e__n"/></e>
 <e lm="senzatetto">      <i>senzatett</i><par n="abbain/o__n"/></e>
 <e lm="separatismo">     <i>separatism</i><par n="abbain/o__n"/></e>
-<e lm="separatista">     <i>separatist</i><par n="altruist/a__adj"/></e>
+<e lm="separatista">     <i>separatist</i><par n="suicid/a__adj"/></e>
 <e lm="separazione">     <i>separazion</i><par n="abbreviazion/e__n"/></e>
 <e lm="sepolcro">        <i>sepolcr</i><par n="abbain/o__n"/></e>
 <e lm="sepolto">         <i>sepolt</i><par n="abbain/o__n"/></e>
@@ -33265,7 +33782,7 @@
 <e lm="speronamento">    <i>speronament</i><par n="abbain/o__n"/></e>
 <e lm="sperpero">        <i>sperper</i><par n="abbain/o__n"/></e>
 <e lm="spesa">           <i>spes</i><par n="cas/a__n"/></e>
-<e lm="spese">           <i>spes</i><par n="medicine__n"/></e>
+<e lm="spese">           <i>spese</i><par n="medicine__n"/></e>
 <e lm="spessore">        <i>spessor</i><par n="abat/e__n"/></e>
 <e lm="spettacolo">      <i>spettacol</i><par n="abbain/o__n"/></e>
 <e lm="spettacolarità">  <i>spettacolarità</i><par n="abilità__n"/></e>
@@ -33786,7 +34303,7 @@
 <e lm="tangentopoli">    <i>tangentopoli</i><par n="abilità__n"/></e>
 <e lm="tanto">           <i>tant</i><par n="abbain/o__n"/></e>
 <e lm="tapino">          <i>tapin</i><par n="abbain/o__n"/></e>
-<e lm="tapiro">          <i>tapir</i><par n="bambin/o__n"/></e>
+<e lm="tapiro">          <i>tapir</i><par n="abbain/o__n"/></e>
 <e lm="tappo">           <i>tapp</i><par n="abbain/o__n"/></e>
 <e lm="tappa">           <i>tapp</i><par n="cas/a__n"/></e>
 <e lm="tappeto">         <i>tappet</i><par n="abbain/o__n"/></e>
@@ -34968,6 +35485,7 @@
 <e lm="welfare">         <i>welfare</i><par n="albatros__n"/></e>
 <e lm="workstation">     <i>workstation</i><par n="abilità__n"/></e>
 <e lm="wow">             <i>wow</i><par n="salve__ij"/></e>
+<e lm="eh">              <i>eh</i><par n="salve__ij"/></e>
 <e lm="www">             <i>www</i><par n="TV__n"/></e>
 <e lm="xenofobo">        <i>xenofob</i><par n="bambin/o__n"/></e>
 <e lm="xenofobia">       <i>xenofobi</i><par n="cas/a__n"/></e>
@@ -36264,7 +36782,6 @@
 <e lm="bizantino">       <i>bizantin</i><par n="abbandonat/o__adj"/></e>
 <e lm="bizzarro">        <i>bizzarr</i><par n="abbandonat/o__adj"/></e>
 <e lm="bizzoso">         <i>bizzos</i><par n="abbandonat/o__adj"/></e>
-<e lm="blando">          <i>bland</i><par n="abbandonat/o__adj"/></e>
 <e lm="blasfemo">        <i>blasfem</i><par n="abbandonat/o__adj"/></e>
 <e lm="blasonato">       <i>blasonat</i><par n="abbandonat/o__adj"/></e>
 <e lm="bleso">           <i>bles</i><par n="abbandonat/o__adj"/></e>
@@ -37167,6 +37684,7 @@
 <e lm="corrosivo">       <i>corrosiv</i><par n="abbandonat/o__adj"/></e>
 <e lm="corrotto">        <i>corrott</i><par n="abbandonat/o__adj"/></e>
 <e lm="corruttibile">    <i>corruttibil</i><par n="fin/e__adj"/></e>
+<e lm="anti-corso">      <i>anti-cors</i><par n="cosiddett/o__adj"/></e>
 <e lm="corso">           <i>cors</i><par n="cosiddett/o__adj"/></e>
 <e lm="corsaro">         <i>corsar</i><par n="abbandonat/o__adj"/></e>
 <e lm="corto">           <i>cort</i><par n="abbandonat/o__adj"/></e>
@@ -37768,7 +38286,7 @@
 <e lm="dogale">          <i>dogal</i><par n="fin/e__adj"/></e>
 <e lm="doganale">        <i>doganal</i><par n="fin/e__adj"/></e>
 <e lm="dogmatico">       <i>dogmatic</i><par n="tecnic/o__adj"/></e>
-<e lm="dolce">           <i>dolc</i><par n="albanes/e__adj"/></e>
+<e lm="dolce">           <i>dolc</i><par n="fin/e__adj"/></e>
 <e lm="dolce-amaro">     <i>dolce-amar</i><par n="abbandonat/o__adj"/></e>
 <e lm="dolciario">       <i>dolciari</i><par n="ampi/o__adj"/></e>
 <e lm="dolciastro">      <i>dolciastr</i><par n="abbandonat/o__adj"/></e>
@@ -38823,7 +39341,7 @@
 <e lm="guelfo">          <i>guelf</i><par n="abbandonat/o__adj"/></e>
 <e lm="guerrafondaio">   <i>guerrafondai</i><par n="ampi/o__adj"/></e>
 <e lm="guerriero">       <i>guerrier</i><par n="abbandonat/o__adj"/></e>
-<e r="LR" lm="guidato da"><i>guidat</i><par n="abbandonat/o__adj"/><p><l><b/>da</l><r><g><b/>da</g></r></p></e>
+<e lm="guidato da"><i>guidat</i><par n="abbandonat/o__adj"/><p><l><b/>da</l><r><g><b/>da</g></r></p></e>
 <e lm="guitto">          <i>guitt</i><par n="abbandonat/o__adj"/></e>
 <e lm="gullottiano">     <i>gullottian</i><par n="abbandonat/o__adj"/></e>
 <e lm="gustativo">       <i>gustativ</i><par n="abbandonat/o__adj"/></e>
@@ -41055,7 +41573,7 @@
 <e lm="pazzo">           <i>pazz</i><par n="abbandonat/o__adj"/></e>
 <e lm="pazzerello">      <i>pazzerell</i><par n="abbandonat/o__adj"/></e>
 <e lm="pazzerellone">    <i>pazzerellon</i><par n="fin/e__adj"/></e>
-<e lm="pazzesco">        <i>pazzesc</i><par n="tedesc/o__adj"/></e>
+<e lm="pazzesco">        <i>pazzesc</i><par n="tecnic/o__adj"/></e>
 <e lm="pazzoide">        <i>pazzoid</i><par n="fin/e__adj"/></e>
 <e lm="pecato">          <i>pecat</i><par n="cosiddett/o__adj"/></e>
 <e lm="peccaminoso">     <i>peccaminos</i><par n="abbandonat/o__adj"/></e>
@@ -42142,7 +42660,7 @@
 <e lm="rotondeggiante">  <i>rotondeggiant</i><par n="fin/e__adj"/></e>
 <e lm="rotto">           <i>rott</i><par n="abbandonat/o__adj"/></e>
 <e lm="rovente">         <i>rovent</i><par n="fin/e__adj"/></e>
-<e lm="rovescio">        <i>rovesci</i><par n="ampi/o__adj"/></e>
+<e lm="rovescio">        <i>rovesc</i><par n="marina/io__adj"/></e>
 <e lm="rovinoso">        <i>rovinos</i><par n="abbandonat/o__adj"/></e>
 <e lm="rozzo">           <i>rozz</i><par n="abbandonat/o__adj"/></e>
 <e lm="ruandese">        <i>ruandes</i><par n="albanes/e__adj"/></e>
@@ -44021,6 +44539,7 @@
 <e lm="zuppo">           <i>zupp</i><par n="abbandonat/o__adj"/></e>
 <e lm="zurighese">       <i>zurighes</i><par n="albanes/e__adj"/></e>
 <e lm="zurliniano">      <i>zurlinian</i><par n="abbandonat/o__adj"/></e>
+<e lm="aragonese">       <i>aragones</i><par n="albanes/e__adj"/></e>
 
     <!-- ******************************
           group n_symbol
@@ -44035,16 +44554,19 @@
 <e lm="breve termine">   <p><l>breve<b/>termine</l><r>breve<b/>termine<s n="n"/><s n="m"/><s n="sg"/></r></p></e>
 <e lm="buon senso">      <p><l>buon<b/>senso</l><r>buon<b/>senso<s n="n"/><s n="m"/><s n="sp"/></r></p></e>
 <e lm="carta astrale">   <p><l>carta<b/>astrale</l><r>carta<b/>astrale<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
+<e lm="carta d'identità"><p><l>carta<b/>d'identità</l><r>carta<b/>d'identità<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
+<e lm="carta d'identità"><p><l>carte<b/>d'identità</l><r>carta<b/>d'identità<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 <e lm="carta dei servizi"><p><l>carta<b/>dei<b/>servizi</l><r>carta<b/>dei<b/>servizi<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
 <e lm="carta intestata"> <p><l>carta<b/>intestata</l><r>carta<b/>intestata<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
 <e lm="carte astrali">   <p><l>carte<b/>astrali</l><r>carta<b/>astrale<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 <e lm="carte dei servizi"><p><l>carte<b/>dei<b/>servizi</l><r>carta<b/>dei<b/>servizi<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
+
 <e lm="carta intestata"> <p><l>carte<b/>intestate</l><r>carta<b/>intestata<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 <e lm="cassetta della posta"><p><l>cassetta<b/>della<b/>posta</l><r>cassetta<b/>della<b/>posta<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
 <e lm="cassetta della posta"><p><l>cassette<b/>della<b/>posta</l><r>cassetta<b/>della<b/>posta<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 <e lm="computer portatile"><p><l>computer<b/>portatile</l><r>computer<b/>portatile<s n="n"/><s n="m"/><s n="sg"/></r></p></e>
 <e lm="computer portatile"><p><l>computer<b/>portatili</l><r>computer<b/>portatile<s n="n"/><s n="m"/><s n="pl"/></r></p></e>
-<e lm="direzione generale"><p><l>direzione<b/>generale</l><r>direzione<b/>generale<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
+<e lm="direzione generale"><p><l>Direzione<b/>Generale</l><r>direzione<b/>generale<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
 <e lm="direzione nazionale"><p><l>direzione<b/>nazionale</l><r>direzione<b/>nazionale<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
 <e lm="direzione generale"><p><l>direzioni<b/>generali</l><r>direzione<b/>generale<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
 <e lm="direzione nazionale"><p><l>direzioni<b/>nazionali</l><r>direzione<b/>nazionale<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
@@ -44076,10 +44598,6 @@
 <e lm="prof">            <p><l>prof</l>      <r>prof<s n="n"/><s n="m"/><s n="sg"/></r></p></e>
 <e r="LR" lm="professor"><p><l>professor</l> <r>professore<s n="n"/><s n="m"/><s n="sg"/></r></p></e>
 <e lm="pubblico ministero"><p><l>pubblici<b/>ministeri</l><r>pubblico<b/>ministero<s n="n"/><s n="m"/><s n="pl"/></r></p></e>
-
-
-
-<!--       ******************************      (n) group      ******************************    -->
 <e lm="pubblico ministero"><p><l>pubblico<b/>ministero</l><r>pubblico<b/>ministero<s n="n"/><s n="m"/><s n="sg"/></r></p></e>
 <e lm="sala da pranzo">  <p><l>sala<b/>da<b/>pranzo</l><r>sala<b/>da<b/>pranzo<s n="n"/><s n="f"/><s n="sg"/></r></p></e>
 <e lm="sala da pranzo">  <p><l>sale<b/>da<b/>pranzo</l><r>sala<b/>da<b/>pranzo<s n="n"/><s n="f"/><s n="pl"/></r></p></e>
@@ -44100,6 +44618,7 @@
 <e r="RL" lm="essere possibile"><i></i><par n="/essere__vblex"/><p><l><b/>possibile</l><r><g><b/>possibile</g></r></p></e>
 <e r="RL" lm="essere grato"><i></i><par n="/essere__vblex"/><p><l><b/>grato</l><r><g><b/>grato</g></r></p></e>
 <e lm="essere carente">  <i></i><par n="/essere__vblex"/><p><l><b/>carente</l><r><g><b/>carente</g></r></p></e>
+<e lm="essere imbranato">  <i></i><par n="/essere__vblex"/><p><l><b/>imbranato</l><r><g><b/>imbranato</g></r></p></e>
 <e lm="udire">           <i></i><par n="/udire__vblex"/></e>
 <e lm="abbacare">        <i>abbac</i><par n="abbarbic/are__vblex"/></e>
 <e lm="abbacchiare">     <i>abbacchi</i><par n="abbacchi/are__vblex"/></e>
@@ -44335,6 +44854,7 @@
 <e lm="annotare">        <i>annot</i><par n="abbacin/are__vblex"/></e>
 <e lm="annullare">       <i>annull</i><par n="abbacin/are__vblex"/></e>
 <e lm="annunciare">      <i>annunc</i><par n="abbiosc/iare__vblex"/></e>
+<e lm="enunciare">       <i>enunc</i><par n="abbiosc/iare__vblex"/></e>
 <e lm="anteporre">       <i>antepo</i><par n="antepo/rre__vblex"/></e>
 <e lm="anticipare">      <i>anticip</i><par n="abbacin/are__vblex"/></e>
 <e lm="antivenire">      <i>antiv</i><par n="avv/enire__vblex"/></e>
@@ -45185,6 +45705,7 @@
 <e lm="fare un pisolino"><i>f</i><par n="f/are__vblex"/><p><l><b/>un<b/>pisolino</l><r><g><b/>un<b/>pisolino</g></r></p></e>
 <e lm="fare uno spuntino"><i>f</i><par n="f/are__vblex"/><p><l><b/>uno<b/>spuntino</l><r><g><b/>uno<b/>spuntino</g></r></p></e>
 <e lm="fare una passeggiata"><i>f</i><par n="f/are__vblex"/><p><l><b/>una<b/>passeggiata</l><r><g><b/>una<b/>passeggiata</g></r></p></e>
+<e lm="fare stare bene"><i>f</i><par n="f/are__vblex"/><p><l><b/>stare<b/>bene</l><r><g><b/>stare<b/>bene</g></r></p></e>
 <e lm="fondere">         <i>f</i><par n="conf/ondere__vblex"/></e>
 <e lm="fare">            <i>f</i><par n="f/are__vblex"/></e>
 <e lm="fabbricare">      <i>fabbric</i><par n="abbarbic/are__vblex"/></e>
@@ -45440,6 +45961,7 @@
 <e lm="incollare">       <i>incoll</i><par n="abbacin/are__vblex"/></e>
 <e lm="incolonnare">     <i>incolonn</i><par n="abbacin/are__vblex"/></e>
 <e lm="incolpare">       <i>incolp</i><par n="abbacin/are__vblex"/></e>
+<e lm="salpare">         <i>salp</i><par n="abbacin/are__vblex"/></e>
 <e lm="incominciare">    <i>incominc</i><par n="abbiosc/iare__vblex"/></e>
 <e lm="incontrare">      <i>incontr</i><par n="abbacin/are__vblex"/></e>
 <e lm="incorrere">       <i>incor</i><par n="accor/rere__vblex"/></e>
@@ -45738,6 +46260,7 @@
 <e lm="mutare">          <i>mut</i><par n="abbacin/are__vblex"/></e>
 <e lm="nuocere">         <i>n</i><par n="n/uocere__vblex"/></e>
 <e lm="nascere">         <i>na</i><par n="na/scere__vblex"/></e>
+<e lm="rinascere">       <i>rina</i><par n="na/scere__vblex"/></e>
 <e lm="narrare">         <i>narr</i><par n="abbacin/are__vblex"/></e>
 <e lm="nascondere">      <i>nasco</i><par n="asco/ndere__vblex"/></e>
 <e lm="naturalizzare">   <i>naturalizz</i><par n="abbacin/are__vblex"/></e>
@@ -45868,6 +46391,7 @@
 <e lm="personalizzare">  <i>personalizz</i><par n="abbacin/are__vblex"/></e>
 <e lm="persuadere">      <i>persua</i><par n="inva/dere__vblex"/></e>
 <e lm="perturbare">      <i>perturb</i><par n="abbacin/are__vblex"/></e>
+<e lm="turbare">         <i>turb</i><par n="abbacin/are__vblex"/></e>
 <e lm="pervenire">       <i>perv</i><par n="avv/enire__vblex"/></e>
 <e lm="pervadere">       <i>perva</i><par n="inva/dere__vblex"/></e>
 <e lm="pervertire">      <i>pervert</i><par n="aborr/ire__vblex"/></e>
@@ -45915,6 +46439,7 @@
 <e lm="popolare">        <i>popol</i><par n="abbacin/are__vblex"/></e>
 <e lm="porgere">         <i>por</i><par n="accin/gere__vblex"/></e>
 <e lm="portare avanti">  <i>port</i><par n="abbacin/are__vblex"/><p><l><b/>avanti</l><r><g><b/>avanti</g></r></p></e>
+<e lm="portare via">  <i>port</i><par n="abbacin/are__vblex"/><p><l><b/>via</l><r><g><b/>via</g></r></p></e>
 <e lm="portare">         <i>port</i><par n="abbacin/are__vblex"/></e>
 <e lm="posare">          <i>pos</i><par n="abbacin/are__vblex"/></e>
 <e lm="posizionare">     <i>posizion</i><par n="abbacin/are__vblex"/></e>
@@ -45928,6 +46453,7 @@
 <e lm="svelare">         <i>svel</i><par n="abbarbic/are__vblex"/></e>
 <e lm="prendere coscienza"><i>pre</i><par n="acce/ndere__vblex"/><p><l><b/>coscienza</l><r><g><b/>coscienza</g></r></p></e>
 <e lm="prendere cura">   <i>pre</i><par n="acce/ndere__vblex"/><p><l><b/>cura</l><r><g><b/>cura</g></r></p></e>
+<e lm="essere per">      <i></i><par n="/essere__vbser"/><p><l><b/>per</l><r><g><b/>per</g></r></p></e>
 <e lm="premere">         <i>pre</i><par n="riassu/mere__vblex"/></e>
 <e lm="prendere">        <i>pre</i><par n="acce/ndere__vblex"/></e>
 <e lm="preavvertire">    <i>preavvert</i><par n="abbrut/ire__vblex"/></e>
@@ -46023,7 +46549,8 @@
 <e lm="protrarre">       <i>protra</i><par n="astra/rre__vblex"/></e>
 <e lm="provenire">       <i>prov</i><par n="prov/enire__vblex"/></e>
 <e lm="provare">         <i>prov</i><par n="abbacin/are__vblex"/></e>
-<e lm="provare a">      <i>prov</i><par n="abbacin/are__vblex"/><p><l><b/>a</l><r><g><b/>a</g></r></p></e>
+<e lm="provare a">       <i>prov</i><par n="abbacin/are__vblex"/><p><l><b/>a</l><r><g><b/>a</g></r></p></e>
+<e lm="pensare a">       <i>pens</i><par n="abbacin/are__vblex"/><p><l><b/>a</l><r><g><b/>a</g></r></p></e>
 <e lm="provare ad" r="LR">      <i>prov</i><par n="abbacin/are__vblex"/><p><l><b/>ad</l><r><g><b/>a</g></r></p></e>
 <e lm="provocare">       <i>provoc</i><par n="abbarbic/are__vblex"/></e>
 <e lm="provvedere">      <i>provv</i><par n="intrav/edere__vblex"/></e>
@@ -46993,6 +47520,8 @@
 <e lm="zincare">         <i>zinc</i><par n="abbarbic/are__vblex"/></e>
 <e lm="zittire">         <i>zitt</i><par n="abbell/ire__vblex"/></e>
 <e lm="zoppicare">       <i>zoppic</i><par n="abbarbic/are__vblex"/></e>
+
+<e lm="arrecare">        <i>arrec</i><par n="abbarbic/are__vblex"/></e>
    
 
 <!--       ******************************      (cnjadv) group      ******************************    -->
@@ -47038,7 +47567,7 @@
 
    <!-- <e lm="per chi"><i>per<b/>chi</i><par n="affinché__cnjsub"/></e>  -->
 
-<e lm="dove">            <i>dove</i><par n="siccome__cnjadv"/></e>
+
 <e lm="dunque">          <i>dunque</i><par n="siccome__cnjadv"/></e>
 <e lm="eccetto che">     <i>eccetto<b/>che</i><par n="siccome__cnjadv"/></e>
 <e lm="escluso che">     <i>escluso<b/>che</i><par n="siccome__cnjadv"/></e>
@@ -47112,6 +47641,7 @@
 <e lm="a continuazione"> <i>a<b/>continuazione</i><par n="ieri__adv"/></e>
 <e lm="a contropelo">    <i>a<b/>contropelo</i><par n="ieri__adv"/></e>
 <e lm="a cosa">          <i>a<b/>cosa</i><par n="ieri__adv"/></e>
+<e lm="a colori">         <i>a<b/>colori</i><par n="ieri__adv"/></e>
 <e lm="a determinate condizioni"><i>a<b/>determinate<b/>condizioni</i><par n="ieri__adv"/></e>
 <e lm="a digiuno">       <i>a<b/>digiuno</i><par n="ieri__adv"/></e>
 <e lm="a distanza">      <i>a<b/>distanza</i><par n="extra__adj"/></e>
@@ -47138,6 +47668,7 @@
 <e lm="a metà">          <i>a<b/>metà</i><par n="ieri__adv"/></e>
 <e lm="a metà strada">   <i>a<b/>metà<b/>strada</i><par n="ieri__adv"/></e>
 <e lm="metà prezzo">     <i>metà<b/>prezzo</i><par n="ieri__adv"/></e>
+<e lm="a metà prezzo">     <i>a<b/>metà<b/>prezzo</i><par n="ieri__adv"/></e>
 <e lm="a mezzanotte">    <i>a<b/>mezzanotte</i><par n="ieri__adv"/></e>
 <e lm="a mezzogiorno">   <i>a<b/>mezzogiorno</i><par n="ieri__adv"/></e>
 <e lm="a nord">          <i>a<b/>nord</i><par n="ieri__adv"/></e>
@@ -47149,7 +47680,7 @@
 <e lm="a posta">         <i>a<b/>posta</i><par n="ieri__adv"/></e>
 <e lm="a posto">         <i>a<b/>posto</i><par n="ieri__adv"/></e>
 <e lm="a posteriori">    <i>a<b/>posteriori</i><par n="ieri__adv"/></e>
-<e lm="a prezzi accessibili"><i>a<b/>prezzi<b/>accessibili</i><par n="ieri__adv"/></e>
+<e lm="a prezzi accessibili"><i>a<b/>prezzi<b/>accessibili</i><par n="extra__adj"/></e>
 <e lm="a priori">        <i>a<b/>priori</i><par n="ieri__adv"/></e>
 <e lm="a proposito">     <i>a<b/>proposito</i><par n="ieri__adv"/></e>
 <e lm="a quei tempi">    <i>a<b/>quei<b/>tempi</i><par n="ieri__adv"/></e>
@@ -47178,6 +47709,9 @@
 <e lm="abbastanza">      <i>abbastanza</i><par n="ieri__adv"/></e>
 <e lm="abbondantemente"> <i>abbondantemente</i><par n="ieri__adv"/></e>
 <e lm="bassa stagione">  <i>bassa<b/>stagione</i><par n="ieri__adv"/></e>
+<e lm="a dire la verità">  <i>a<b/>dire<b/>la<b/>verità</i><par n="ieri__adv"/></e>
+<e lm="part-time">       <i>part-time</i><par n="ieri__adv"/></e>
+<e lm="in privato">      <i>in<b/>privato</i><par n="ieri__adv"/></e>
 
 <!--       ******************************      (adv) group      ******************************    -->
 
@@ -47618,8 +48152,7 @@
 <e lm="dopotutto">       <i>dopotutto</i><par n="ieri__adv"/></e>
 <e lm="doppiamente">     <i>doppiamente</i><par n="ieri__adv"/></e>
 <e lm="dottamente">      <i>dottamente</i><par n="ieri__adv"/></e>
-<e r="LR" lm="dove">     <i>dove</i><par n="quando__adv"/></e>
-<e lm="dove">            <i>dove</i><par n="ieri__adv"/></e>
+<e lm="dove" r="LR">     <i>dove</i><par n="quando__adv"/></e>
 <e lm="doviziosamente">  <i>doviziosamente</i><par n="ieri__adv"/></e>
 <e lm="dovunque">        <i>dovunque</i><par n="ieri__adv"/></e>
 <e lm="dovutamente">     <i>dovutamente</i><par n="ieri__adv"/></e>
@@ -47863,6 +48396,8 @@
 <e lm="in nessun modo">  <i>in<b/>nessun<b/>modo</i><par n="ieri__adv"/></e>
 <e lm="in niente">       <i>in<b/>niente</i><par n="ieri__adv"/></e>
 <e lm="in onda">         <i>in<b/>onda</i><par n="ieri__adv"/></e>
+<e lm="in aria">         <i>in<b/>aria</i><par n="ieri__adv"/></e>
+<e lm="nell'aria">       <i>nell'aria</i><par n="ieri__adv"/></e>
 <e lm="in pace">         <i>in<b/>pace</i><par n="ieri__adv"/></e>
 <e lm="in piedi">        <i>in<b/>piedi</i><par n="ieri__adv"/></e>
 <e lm="in più">          <i>in<b/>più</i><par n="ieri__adv"/></e>
@@ -48254,6 +48789,7 @@
 <e lm="poco più">        <i>poco<b/>più</i><par n="ieri__adv"/></e>
 <e lm="poderosamente">   <i>poderosamente</i><par n="ieri__adv"/></e>
 <e lm="poi">             <i>poi</i><par n="ieri__adv"/></e>
+<e lm="poi tanto">       <i>poi<b/>tanto</i><par n="ieri__adv"/></e>
 <e lm="polemicamente">   <i>polemicamente</i><par n="ieri__adv"/></e>
 <e lm="politicamente">   <i>politicamente</i><par n="ieri__adv"/></e>
 <e lm="popolarmente">    <i>popolarmente</i><par n="ieri__adv"/></e>
@@ -48556,7 +49092,8 @@
 <e lm="umilmente">       <i>umilmente</i><par n="ieri__adv"/></e>
 <e lm="un'altra cosa">   <i>un'altra<b/>cosa</i><par n="ieri__adv"/></e>
 <e lm="un poco">         <i>un<b/>poco</i><par n="ieri__adv"/></e>
-<e lm="un pò">           <i>un<b/>pò</i><par n="ieri__adv"/></e>
+<e lm="un po'">          <i>un<b/>po'</i><par n="ieri__adv"/></e>
+<e lm="un bel po'">      <i>un<b/>bel<b/>po'</i><par n="ieri__adv"/></e>
 <e lm="una volta">       <i>una<b/>volta</i><par n="ieri__adv"/></e>
 <e lm="unanimemente">    <i>unanimemente</i><par n="ieri__adv"/></e>
 <e lm="unicamente">      <i>unicamente</i><par n="ieri__adv"/></e>
@@ -48664,6 +49201,7 @@
 <e lm="da">              <par n="/da__pr"/></e>
 <e lm="davanti">         <i>davanti</i><par n="accanto__pr"/></e>
 <e lm="davanti a">       <i>davanti<b/></i><par n="/a__pr"/></e>
+<e lm="dentro a">        <i>dentro<b/></i><par n="/a__pr"/></e>
 <e lm="dentro">          <i>dentro</i><par n="accanto__pr"/></e>
 <e lm="dentro di">       <i>dentro<b/></i><par n="/di__pr"/></e>
 <e lm="di">              <par n="/di__pr"/></e>
@@ -48687,6 +49225,7 @@
 <e lm="fuori da">        <i>fuori<b/></i><par n="/da__pr"/></e>
 <e r="LR" lm="in">       <i>in</i><par n="accanto__pr"/></e>
 <e lm="in assenza di">   <i>in<b/>assenza<b/></i><par n="/di__pr"/></e>
+<e lm="in cerca di">   <i>in<b/>cerca<b/></i><par n="/di__pr"/></e>
 <e lm="in attesa di">    <i>in<b/>attesa<b/></i><par n="/di__pr"/></e>
 <e lm="in cima a">       <i>in<b/>cima<b/></i><par n="/a__pr"/></e>
 <e lm="in mezzo a">      <i>in<b/>mezzo<b/></i><par n="/a__pr"/></e>
@@ -48694,12 +49233,16 @@
 <e lm="insieme a">       <i>insieme<b/></i><par n="/a__pr"/></e>
 <e r="RL" lm="insieme con"><p><l>insieme<b/><a/>con</l><r>insieme<b/>con</r></p><par n="accanto__pr"/></e>
 <e r="LR" lm="insieme con"><i>insieme<b/>con</i><par n="accanto__pr"/></e>
+<e r="RL" lm="in gara con"><p><l>in<b/>gara<a/>con</l><r>in<b/>gara<b/>con</r></p><par n="accanto__pr"/></e>
+<e r="LR" lm="in gara con"><i>in<b/>gara<b/>con</i><par n="accanto__pr"/></e>
+<e r="LR" lm="in gara col"><i>in<b/>gara<b/></i><par n="/col__pr"/></e>
 <e lm="intorno a">       <i>intorno<b/></i><par n="/a__pr"/></e>
 <e lm="lungo">           <i>lungo</i><par n="accanto__pr"/></e>
 <e lm="mediante">        <i>mediante</i><par n="accanto__pr"/></e>
 <e lm="nel">             <par n="/nel__pr"/></e>
 <e lm="nonostante">      <i>nonostante</i><par n="accanto__pr"/></e>
 <e lm="oltre">           <i>oltre</i><par n="accanto__pr"/></e>
+<e lm="oltre a">           <i>oltre<b/></i><par n="/a__pr"/></e>
 <e lm="per">             <i>per</i><par n="accanto__pr"/></e>
 <e lm="per altri">       <i>per<b/>altri</i><par n="accanto__pr"/></e>
 <e lm="per mezzo di">    <i>per<b/>mezzo<b/></i><par n="/di__pr"/></e>
@@ -48731,6 +49274,8 @@
 <e r="LR" lm="verso">    <i>verso</i><par n="accanto__pr"/></e>
 <e lm="verso">           <i>verso</i><par n="accanto__pr"/></e>
 <e lm="vicino a">        <i>vicino<b/></i><par n="/a__pr"/></e>
+<e lm="migliaia di">        <i>migliaia<b/></i><par n="/di__pr"/></e>
+<e lm="migliaio di">        <i>migliaio<b/></i><par n="/di__pr"/></e>
     <!-- ******************************
           group ij
       ****************************** -->
@@ -48945,6 +49490,7 @@
 <e lm="quasi">           <i>quasi</i><par n="bene__preadv"/></e>
 <e lm="talmente">        <i>talmente</i><par n="bene__preadv"/></e>
 <e lm="tanto">           <i>tanto</i><par n="bene__preadv"/></e>
+<e lm="poi tanto">       <i>poi<b/>tanto</i><par n="bene__preadv"/></e>
 
     <!-- ******************************
           group prn_symbol
@@ -49026,10 +49572,10 @@
 <e lm="KB">              <i>KB</i><par n="a.C.__abbr"/></e>
 <e lm="MB">              <i>MB</i><par n="a.C.__abbr"/></e>
 <e lm="TB">              <i>TB</i><par n="a.C.__abbr"/></e>
-<e r="LR" lm="a.C.">     <p><l>a.<b/>C.</l>  <r>a.C</r></p><par n="a.C.__abbr"/></e>
+<e r="LR" lm="a. C.">     <p><l>a.<b/>C.</l><r>a.C</r></p><par n="a.C.__abbr"/></e>
 <e lm="a.C.">            <i>a.C</i><par n="a.C.__abbr"/></e>
 <e lm="cm">              <i>cm</i><par n="a.C.__abbr"/></e>
-<e r="LR" lm="a.C.">     <p><l>d.<b/>C.</l>  <r>d.C</r></p><par n="a.C.__abbr"/></e>
+<e r="LR" lm="d. C.">     <p><l>d.<b/>C.</l>  <r>d.C</r></p><par n="a.C.__abbr"/></e>
 <e lm="d.C.">            <i>d.C</i><par n="a.C.__abbr"/></e>
 <e lm="g">               <i>g</i><par n="a.C.__abbr"/></e>
 <e lm="kg">              <i>kg</i><par n="a.C.__abbr"/></e>
@@ -49244,7 +49790,6 @@
 <e r="LR" lm="anch'">    <p><l>anch'</l>     <r>anche</r></p><par n="ieri__adv"/></e>
 <e r="LR" lm="com'">     <p><l>com'</l>      <r>come</r></p><par n="ieri__adv"/></e>
 <e r="LR" lm="tant'">    <p><l>tant'</l>     <r>tanto</r></p><par n="ieri__adv"/></e>
-<e r="LR" lm="un po'">   <p><l>un<b/>po'</l> <r>un<b/>pò</r></p><par n="ieri__adv"/></e>
     <!-- ******************************
           group prn_symbol
       ****************************** -->
@@ -49298,7 +49843,9 @@
   <section id="final" type="inconditional">
 <e>                      <par n="pardret"/></e>
 <e>                      <par n="separ"/></e>
+<e>                      <par n="guionet"/></e>
 <e>                      <par n="paresq"/></e>
+<e>                      <par n="quotes"/></e>
 <e>                      <par n="coma"/></e>
 <e>                      <par n="separa"/></e>
 <e>                      <par n="cometa"/></e>

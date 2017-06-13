@@ -2208,6 +2208,54 @@
       <label-item label="ADJMF"/>
     </label-sequence>
 
+
+    <label-sequence>
+      <label-item label="PRNTN"/>
+      <label-item label="NOMF"/>
+    </label-sequence>
+
+    <label-sequence>
+      <label-item label="PRNTN"/>
+      <label-item label="NOMM"/>
+    </label-sequence>
+
+    <label-sequence>
+      <label-item label="PRNTN"/>
+      <label-item label="NOMMF"/>
+    </label-sequence>
+
+
+
+
+    <label-sequence>
+      <label-item label="PREPPRN"/>
+      <label-item label="NOMF"/>
+    </label-sequence>
+
+    <label-sequence>
+      <label-item label="PREPPRN"/>
+      <label-item label="NOMM"/>
+    </label-sequence>
+
+    <label-sequence>
+      <label-item label="PREPPRN"/>
+      <label-item label="NOMMF"/>
+    </label-sequence>
+
+    <label-sequence>
+      <label-item label="DETM"/>
+      <label-item label="INTPRN"/>
+    </label-sequence>
+    <label-sequence>
+      <label-item label="DETF"/>
+      <label-item label="INTPRN"/>
+    </label-sequence>
+    <label-sequence>
+      <label-item label="DETMF"/>
+      <label-item label="INTPRN"/>
+    </label-sequence>   
+
+
   </forbid>
 
 
